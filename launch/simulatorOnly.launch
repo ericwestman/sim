@@ -1,0 +1,6 @@
+<launch>
+	<node name="coordinator" pkg="sim" type="coordinator"/>
+	<node name="simulator" pkg="sim" type="simulator" />
+	<node name="ControlMenu" pkg="sim" type="ControlMenu" output="screen" />
+	<node name="KMLCreator" pkg="sim" type="KMLCreator" output="screen" />
+</launch>

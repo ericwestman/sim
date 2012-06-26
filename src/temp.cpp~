@@ -1,0 +1,49 @@
+//////////////////////////////////////////////////////////////////////////////////////
+////////////////////SHOULD TURN RIGHT//////////////////////////////////////////////	
+
+	/* For checking whether the plane should turn right or left */
+	double theta, theta_prev, theta_prime, delta_theta, theta1, theta2;
+	bool turnRight, plane2OnRight, plane1OnRight;
+	double cartBearing1 = toCartesian(plane1.getCurrentBearing());
+	double cartBearing2 = toCartesian(plane2.getCurrentBearing());
+
+	/* Calculate theta, theta1, and theta2. Theta is the cartesian angle
+	from 0 degrees (due East) to plane2 (using plane1 as the origin). This 
+	may be referred to as the LOS angle. */
+	theta = findAngle(plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude, 
+		plane2.getCurrentLoc().latitude, plane2.getCurrentLoc().longitude);
+	theta_prev = findAngle(plane1.getPreviousLoc().latitude, plane1.getPreviousLoc().longitude, 
+		plane2.getPreviousLoc().latitude, plane2.getPreviousLoc().longitude);
+	delta_theta = theta - theta_prev;
+	theta_prime = manipulateAngle(theta+180.0);
+	theta1 = manipulateAngle(cartBearing1 - theta);
+	theta2 = manipulateAngle(cartBearing2 - theta_prime);
+
+	/* Calculate which side of plane1 that plane2 is on, and also which side of plane2 plane 1 is on.*/
+	plane2OnRight = theta1 >= 0; plane1OnRight = theta2 >= 0;
+
+	/* Set theta1 to be on positive*/
+	theta1 = fabs(theta1);
+	theta2 = fabs(theta2);
+
+	//ROS_WARN("Plane %d: Bearing: %f plane2OnRight: %d", plane1.getID(), plane1.getCurrentBearing(), plane2OnRight);
+
+	/* Calculate which direction to turn*/
+	if (plane2OnRight && plane1OnRight) turnRight = false;
+	else if (!plane2OnRight && !plane1OnRight) turnRight = true;
+	else if (plane2OnRight && !plane1OnRight) turnRight = (theta1 <= theta2) ? true : false;
+	else if (!plane2OnRight && plane1OnRight) turnRight = (theta1 >= theta2) ? true : false;
+
+	if (plane1.getID() == 2 || plane2.getID() == 2)
+		//ROS_WARN("Plane %d: %f | Plane %d: %f TurnRight: %d", plane1.getID(), theta1, plane2.getID(), theta2, turnRight);
+	return turnRight;
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////Calculate Waypoint///////////////////////////////////////////////////////
+
+
+
+
+

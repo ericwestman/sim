@@ -1,0 +1,14 @@
+(cl:in-package sim-srv)
+(cl:export '(STARTINGLATITUDE-VAL
+          STARTINGLATITUDE
+          STARTINGLONGITUDE-VAL
+          STARTINGLONGITUDE
+          STARTINGALTITUDE-VAL
+          STARTINGALTITUDE
+          STARTINGBEARING-VAL
+          STARTINGBEARING
+          REQUESTEDID-VAL
+          REQUESTEDID
+          PLANEID-VAL
+          PLANEID
+))
