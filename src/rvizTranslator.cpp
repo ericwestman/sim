@@ -205,7 +205,7 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr& msg)
 	marker2.lifetime = ros::Duration();
 
 	// Publish the marker
-	marker_pub.publish(marker2);
+	//marker_pub.publish(marker2);
 
 //request waypoint info to publish a square at each plane's next waypoint location.
 	sim::RequestWaypointInfo srv;

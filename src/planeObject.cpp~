@@ -3,14 +3,14 @@
 */
 
 #include "ros/ros.h"
-#include "AU_UAV_ROS/planeObject.h"
-#include "AU_UAV_ROS/SimulatedPlane.h"
+#include "sim/planeObject.h"
+#include "sim/SimulatedPlane.h"
 
 #include <math.h>
-#include "AU_UAV_ROS/standardFuncs.h" /* for PI, EARTH_RADIUS in meters */
+#include "sim/standardFuncs.h" /* for PI, EARTH_RADIUS in meters */
 
 /* Implementation of the default constructor: Member variables are set to zero */
-AU_UAV_ROS::PlaneObject::PlaneObject(void) {
+sim::PlaneObject::PlaneObject(void) {
 	this->id = 0;
 	this->currentLoc.altitude = 0.0;
 	this->currentLoc.latitude = 0.0;
@@ -30,7 +30,7 @@ AU_UAV_ROS::PlaneObject::PlaneObject(void) {
 }
 
 /* Explicit value constructor using TelemetryUpdate */
-AU_UAV_ROS::PlaneObject::PlaneObject(double cRadius, const AU_UAV_ROS::TelemetryUpdate &msg) {
+sim::PlaneObject::PlaneObject(double cRadius, const sim::TelemetryUpdate &msg) {
 	this->id = msg.planeID;
 	this->currentLoc.altitude = msg.currentAltitude;
 	this->currentLoc.latitude = msg.currentLatitude;
@@ -50,99 +50,104 @@ AU_UAV_ROS::PlaneObject::PlaneObject(double cRadius, const AU_UAV_ROS::Telemetry
 }
 
 /* mutator functions to update member variables */
-void AU_UAV_ROS::PlaneObject::setID(int id){
+void sim::PlaneObject::setID(int id){
 	this->id = id;
 }
 
-void AU_UAV_ROS::PlaneObject::setPreviousLoc(double lat, double lon, double alt) {
+void sim::PlaneObject::setPreviousLoc(double lat, double lon, double alt) {
 	this->previousLoc.latitude = lat;
 	this->previousLoc.longitude = lon;
 	this->previousLoc.altitude = alt;
 }
 
-void AU_UAV_ROS::PlaneObject::setCurrentLoc(double lat, double lon, double alt) {
+void sim::PlaneObject::setCurrentLoc(double lat, double lon, double alt) {
 	this->currentLoc.latitude = lat;
 	this->currentLoc.longitude = lon;
 	this->currentLoc.altitude = alt;
 }
 
-void AU_UAV_ROS::PlaneObject::setTargetBearing(double tBearing) {
+void sim::PlaneObject::setTargetBearing(double tBearing) {
 	this->targetBearing = tBearing;
 }
 
-void AU_UAV_ROS::PlaneObject::setCurrentBearing(double cBearing) {
+void sim::PlaneObject::setCurrentBearing(double cBearing) {
 	this->currentBearing = cBearing;
 }
 
-void AU_UAV_ROS::PlaneObject::setSpeed(double speed) {
+void sim::PlaneObject::setSpeed(double speed) {
 	this->speed = speed;
 }
 
-void AU_UAV_ROS::PlaneObject::setDestination(const AU_UAV_ROS::waypoint &destination) {
+void sim::PlaneObject::setDestination(const sim::waypoint &destination) {
 	this->destination = destination;
 }
 
-void AU_UAV_ROS::PlaneObject::updateTime(void) {
+void sim::PlaneObject::updateTime(void) {
 	this->lastUpdateTime = ros::Time::now().toSec();
 }
 
-void AU_UAV_ROS::PlaneObject::update(const AU_UAV_ROS::TelemetryUpdate &msg) {
-
-	this->setTargetBearing(msg.targetBearing);
+void sim::PlaneObject::update(const sim::TelemetryUpdate &msg) {
 
 	//Calculate actual Cardinal Bearing
+	this->setPreviousLoc(this->currentLoc.latitude, this->currentLoc.longitude, this->currentLoc.altitude);
+	this->setCurrentLoc(msg.currentLatitude, msg.currentLongitude, msg.currentAltitude);
+
 	double numerator = (this->currentLoc.latitude - this->previousLoc.latitude);
 	double denominator = (this->currentLoc.longitude - this->previousLoc.longitude);
 	double angle = atan2(numerator*DELTA_LAT_TO_METERS,denominator*DELTA_LON_TO_METERS)*180/PI;
+
+	/*if (this->id == 5 || this->id == 15) {
+		ROS_WARN("Num: %f Den: %f Ang: %f", numerator, denominator, angle);
+	}*/
 	this->setCurrentBearing(toCardinal(angle));
 
-	this->setPreviousLoc(this->currentLoc.latitude, this->currentLoc.longitude, this->currentLoc.altitude);
-	this->setCurrentLoc(msg.currentLatitude, msg.currentLongitude, msg.currentAltitude);
+	this->setTargetBearing(msg.targetBearing);
+
 	this->setSpeed(msg.groundSpeed);
 	this->updateTime();
 }
 
 /* accessor functions */
-int AU_UAV_ROS::PlaneObject::getID(void) const {
+int sim::PlaneObject::getID(void) const {
 	return this->id;
 }
 
-AU_UAV_ROS::coordinate AU_UAV_ROS::PlaneObject::getPreviousLoc(void) const {
+sim::coordinate sim::PlaneObject::getPreviousLoc(void) const {
 	return this->previousLoc;
 }
 
-AU_UAV_ROS::coordinate AU_UAV_ROS::PlaneObject::getCurrentLoc(void) const {
+sim::coordinate sim::PlaneObject::getCurrentLoc(void) const {
 	return this->currentLoc;
 }
 
-double AU_UAV_ROS::PlaneObject::getTargetBearing(void) const {
+double sim::PlaneObject::getTargetBearing(void) const {
 	return this->targetBearing;
 }
 
-double AU_UAV_ROS::PlaneObject::getCurrentBearing(void) const {
+double sim::PlaneObject::getCurrentBearing(void) const {
 	return this->currentBearing;
 }
 	
-double AU_UAV_ROS::PlaneObject::getSpeed(void) const {
+double sim::PlaneObject::getSpeed(void) const {
 	return this->speed;
 }
 
-double AU_UAV_ROS::PlaneObject::getLastUpdateTime(void) const {
+double sim::PlaneObject::getLastUpdateTime(void) const {
 	return this->lastUpdateTime;
 }
 
-AU_UAV_ROS::waypoint AU_UAV_ROS::PlaneObject::getDestination(void) const {
+sim::waypoint sim::PlaneObject::getDestination(void) const {
 	return this->destination;
 }
 
 /* Find distance between this plane and another plane, returns in meters */
-double AU_UAV_ROS::PlaneObject::findDistance(const AU_UAV_ROS::PlaneObject& plane) const {
+double sim::PlaneObject::findDistance(const sim::PlaneObject& plane) const {
 	return this->findDistance(plane.currentLoc.latitude, plane.currentLoc.longitude);
 }
 
 /* Find distance between this plane and another pair of coordinates, 
 returns value in meters */
-double AU_UAV_ROS::PlaneObject::findDistance(double lat2, double lon2) const {
+double sim::PlaneObject::findDistance(double lat2, double lon2) const {
 	double xdiff = (lon2 - this->currentLoc.longitude)*DELTA_LON_TO_METERS;
 	double ydiff = (lat2 - this->currentLoc.latitude)*DELTA_LAT_TO_METERS;
 
@@ -151,13 +156,13 @@ double AU_UAV_ROS::PlaneObject::findDistance(double lat2, double lon2) const {
 
 /* Find Cartesian angle between this plane and another plane, using this plane
 as the origin */
-double AU_UAV_ROS::PlaneObject::findAngle(const AU_UAV_ROS::PlaneObject& plane) const {
+double sim::PlaneObject::findAngle(const sim::PlaneObject& plane) const {
 	return this->findAngle(plane.currentLoc.latitude, plane.currentLoc.longitude);
 }
 
 /* Find Cartesian angle between this plane and another plane's latitude/longitude 
 using this plane as the origin */
-double AU_UAV_ROS::PlaneObject::findAngle(double lat2, double lon2) const {
+double sim::PlaneObject::findAngle(double lat2, double lon2) const {
 	double xdiff = (lon2 - this->currentLoc.longitude)*DELTA_LON_TO_METERS;
 	double ydiff = (lat2 - this->currentLoc.latitude)*DELTA_LAT_TO_METERS;
 	
@@ -165,7 +170,7 @@ double AU_UAV_ROS::PlaneObject::findAngle(double lat2, double lon2) const {
 }
 
 
-AU_UAV_ROS::PlaneObject& AU_UAV_ROS::PlaneObject::operator=(const AU_UAV_ROS::PlaneObject& plane) {
+sim::PlaneObject& sim::PlaneObject::operator=(const sim::PlaneObject& plane) {
 
 	this->id = plane.id;
 	this->currentLoc.altitude = plane.currentLoc.altitude;

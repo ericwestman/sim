@@ -17,17 +17,17 @@ This node controls the collision avoidance algorithm--an implementation of react
 
 //ROS headers
 #include "ros/ros.h"
-#include "AU_UAV_ROS/TelemetryUpdate.h"
-#include "AU_UAV_ROS/GoToWaypoint.h"
-#include "AU_UAV_ROS/RequestWaypointInfo.h"
-#include "AU_UAV_ROS/standardDefs.h"
+#include "sim/TelemetryUpdate.h"
+#include "sim/GoToWaypoint.h"
+#include "sim/RequestWaypointInfo.h"
+#include "sim/standardDefs.h"
 #include <tf/transform_broadcaster.h>
 #include <visualization_msgs/Marker.h>
 
 //our headers
-#include "AU_UAV_ROS/planeObject.h"
-#include "AU_UAV_ROS/standardFuncs.h"
-#include "AU_UAV_ROS/ripna.h"
+#include "sim/planeObject.h"
+#include "sim/standardFuncs.h"
+#include "sim/ripna.h"
 
 
 #define WEST_MOST_LONGITUDE -85.490356
@@ -81,14 +81,14 @@ the number of planes in the airspace, and the current planes ID */
 
 
 
-std::map<int, AU_UAV_ROS::PlaneObject> planes; /* map of planes in the airspace.  The key is the plane id of the aircraft */
+std::map<int, sim::PlaneObject> planes; /* map of planes in the airspace.  The key is the plane id of the aircraft */
 
 /* This function is run every time new telemetry information from any plane is recieved.  With the new telemetry update, 
 information about the plane is updated, including bearing, speed, current location, etc.  Additionally, we check to see
 if the UAV has reached it's current destination, and, if so, update the destination of the UAV.
 After updating, the calculateForces function is called to find a the new force acting on the UAV; from this new force,
 a next waypoint is found and forwarded to the coordinator. */
-void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr &msg);
+void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg);
 
 
 int main(int argc, char **argv)
@@ -100,8 +100,8 @@ int main(int argc, char **argv)
 	/*subscribe to telemetry outputs and create clients for the 
 	goToWaypoint and requestWaypointInfo services*/
 	ros::Subscriber sub = n.subscribe("telemetry", 1000, telemetryCallback);
-	goToWaypointClient = n.serviceClient<AU_UAV_ROS::GoToWaypoint>("go_to_waypoint");
-	requestWaypointInfoClient = n.serviceClient<AU_UAV_ROS::RequestWaypointInfo>("request_waypoint_info");
+	goToWaypointClient = n.serviceClient<sim::GoToWaypoint>("go_to_waypoint");
+	requestWaypointInfoClient = n.serviceClient<sim::RequestWaypointInfo>("request_waypoint_info");
 	
 	//publish basic shapes to plane positions
   	marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 100);
@@ -116,14 +116,14 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr &msg)
+void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 {	
 	int planeID = msg->planeID;
 
 	/* Instantiate services for use later, and get planeID*/
-	AU_UAV_ROS::GoToWaypoint goToWaypointSrv;
-	AU_UAV_ROS::GoToWaypoint goToWaypointSrv2;
-	AU_UAV_ROS::RequestWaypointInfo requestWaypointInfoSrv;
+	sim::GoToWaypoint goToWaypointSrv;
+	sim::GoToWaypoint goToWaypointSrv2;
+	sim::RequestWaypointInfo requestWaypointInfoSrv;
 	
 
 	/* Request this plane's current normal destination */
@@ -161,12 +161,12 @@ void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr &msg)
 	if (planes.find(planeID) == planes.end() && msg->currentWaypointIndex != -1){ 
 		/* This is a new plane, so create a new planeObject and 
 		give it the appropriate information */
-		AU_UAV_ROS::PlaneObject newPlane(MPS_SPEED, *msg); 
+		sim::PlaneObject newPlane(MPS_SPEED, *msg); 
 		planes[planeID] = newPlane; /* put the new plane into the map */
 
 		/* Update the destination of the PlaneObject with the value 
 		found with the requestWaypointInfoSrv call */
-		AU_UAV_ROS::waypoint newDest; 
+		sim::waypoint newDest; 
 		newDest.latitude = requestWaypointInfoSrv.response.latitude;
 		newDest.longitude = requestWaypointInfoSrv.response.longitude;
 		newDest.altitude = requestWaypointInfoSrv.response.altitude;
@@ -199,8 +199,8 @@ void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr &msg)
 	}
 	else{
 		planes[planeID].update(*msg); /* update plane with new position */
-
-		AU_UAV_ROS::waypoint newDest;
+		ROS_WARN("Plane%d updated!!", planeID);
+		sim::waypoint newDest;
 
 		newDest.latitude = requestWaypointInfoSrv.response.latitude;
 		newDest.longitude = requestWaypointInfoSrv.response.longitude;
@@ -216,8 +216,10 @@ void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr &msg)
 		return;
 	}
 
-	AU_UAV_ROS::waypoint newWaypoint;
-
+	sim::waypoint newWaypoint;
+	
+	ROS_ERROR("Number of planes: %d PlaneID: %d", numPlanes, planeID);
+	
 	for (int n = 0; n < numPlanes; n++) {
 		/* This line of code calls the collision avoidance algorithm 
 		and determines if there should be collision avoidance 
@@ -249,15 +251,22 @@ void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr &msg)
 			ROS_ERROR("Did not receive response");
 		}
 
-	
+		requestWaypointInfoSrv.request.planeID = currentPlaneID;
+		requestWaypointInfoSrv.request.isAvoidanceWaypoint = true;
+		requestWaypointInfoSrv.request.positionInQueue = 0;
 
+		if (requestWaypointInfoClient.call(requestWaypointInfoSrv) && (currentPlaneID == 5 || currentPlaneID == 15)){
+			ROS_WARN("Angles:%f, %f, %f", findAngle(planes[currentPlaneID].getCurrentLoc().latitude, planes[currentPlaneID].getCurrentLoc().longitude, requestWaypointInfoSrv.response.latitude, requestWaypointInfoSrv.response.longitude) , toCartesian(planes[currentPlaneID].getCurrentBearing()), findAngle(planes[currentPlaneID].getCurrentLoc().latitude, planes[currentPlaneID].getCurrentLoc().longitude, requestWaypointInfoSrv.response.latitude, requestWaypointInfoSrv.response.longitude) - toCartesian(planes[currentPlaneID].getCurrentBearing()));
+			ROS_WARN("Plane %d Destination:  Latitude: %f, Longitude: %f", currentPlaneID, requestWaypointInfoSrv.response.latitude, requestWaypointInfoSrv.response.longitude);
+		}
 
 		//request waypoint info to publish a square at each plane's next COLLISION AVOIDANCE waypoint location.
-		/*AU_UAV_ROS::RequestWaypointInfo srv2;
+		/*sim::RequestWaypointInfo srv2;
 		srv2.request.planeID = msg->planeID;	
 		srv2.request.isAvoidanceWaypoint = true;
 		srv2.request.positionInQueue = 0;//msg->currentWaypointIndex; */
 	
+		/*
 		static tf::TransformBroadcaster br;
 		tf::Transform transform;
 		char buffer [5];
@@ -325,6 +334,7 @@ void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr &msg)
 
 		// Publish the marker
 		marker_pub.publish(marker4);	
+		*/
 
 	}
 	

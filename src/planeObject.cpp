@@ -88,16 +88,21 @@ void sim::PlaneObject::updateTime(void) {
 
 void sim::PlaneObject::update(const sim::TelemetryUpdate &msg) {
 
-	this->setTargetBearing(msg.targetBearing);
-
 	//Calculate actual Cardinal Bearing
+	this->setPreviousLoc(this->currentLoc.latitude, this->currentLoc.longitude, this->currentLoc.altitude);
+	this->setCurrentLoc(msg.currentLatitude, msg.currentLongitude, msg.currentAltitude);
+
 	double numerator = (this->currentLoc.latitude - this->previousLoc.latitude);
 	double denominator = (this->currentLoc.longitude - this->previousLoc.longitude);
 	double angle = atan2(numerator*DELTA_LAT_TO_METERS,denominator*DELTA_LON_TO_METERS)*180/PI;
+
+	/*if (this->id == 5 || this->id == 15) {
+		ROS_WARN("Num: %f Den: %f Ang: %f", numerator, denominator, angle);
+	}*/
 	this->setCurrentBearing(toCardinal(angle));
 
-	this->setPreviousLoc(this->currentLoc.latitude, this->currentLoc.longitude, this->currentLoc.altitude);
-	this->setCurrentLoc(msg.currentLatitude, msg.currentLongitude, msg.currentAltitude);
+	this->setTargetBearing(msg.targetBearing);
+
 	this->setSpeed(msg.groundSpeed);
 	this->updateTime();
 }

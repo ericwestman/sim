@@ -199,7 +199,6 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 	}
 	else{
 		planes[planeID].update(*msg); /* update plane with new position */
-
 		sim::waypoint newDest;
 
 		newDest.latitude = requestWaypointInfoSrv.response.latitude;
@@ -217,7 +216,9 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 	}
 
 	sim::waypoint newWaypoint;
-
+	
+	ROS_ERROR("Number of planes: %d PlaneID: %d", numPlanes, planeID);
+	
 	for (int n = 0; n < numPlanes; n++) {
 		/* This line of code calls the collision avoidance algorithm 
 		and determines if there should be collision avoidance 
@@ -249,8 +250,14 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 			ROS_ERROR("Did not receive response");
 		}
 
-	
+		requestWaypointInfoSrv.request.planeID = currentPlaneID;
+		requestWaypointInfoSrv.request.isAvoidanceWaypoint = true;
+		requestWaypointInfoSrv.request.positionInQueue = 0;
 
+		if (requestWaypointInfoClient.call(requestWaypointInfoSrv) && (currentPlaneID == 5 || currentPlaneID == 15)){
+			ROS_WARN("Angles:%f, %f, %f", findAngle(planes[currentPlaneID].getCurrentLoc().latitude, planes[currentPlaneID].getCurrentLoc().longitude, requestWaypointInfoSrv.response.latitude, requestWaypointInfoSrv.response.longitude) , toCartesian(planes[currentPlaneID].getCurrentBearing()), findAngle(planes[currentPlaneID].getCurrentLoc().latitude, planes[currentPlaneID].getCurrentLoc().longitude, requestWaypointInfoSrv.response.latitude, requestWaypointInfoSrv.response.longitude) - toCartesian(planes[currentPlaneID].getCurrentBearing()));
+			ROS_WARN("Plane %d Destination:  Latitude: %f, Longitude: %f", currentPlaneID, requestWaypointInfoSrv.response.latitude, requestWaypointInfoSrv.response.longitude);
+		}
 
 		//request waypoint info to publish a square at each plane's next COLLISION AVOIDANCE waypoint location.
 		/*sim::RequestWaypointInfo srv2;
@@ -258,6 +265,7 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 		srv2.request.isAvoidanceWaypoint = true;
 		srv2.request.positionInQueue = 0;//msg->currentWaypointIndex; */
 	
+		/*
 		static tf::TransformBroadcaster br;
 		tf::Transform transform;
 		char buffer [5];
@@ -325,6 +333,7 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 
 		// Publish the marker
 		marker_pub.publish(marker4);	
+		*/
 
 	}
 	

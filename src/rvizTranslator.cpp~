@@ -16,12 +16,12 @@ is already setup along with a dummy version of how the service request would wor
 
 //ROS headers
 #include "ros/ros.h"
-#include "AU_UAV_ROS/TelemetryUpdate.h"
-#include "AU_UAV_ROS/GoToWaypoint.h"
+#include "sim/TelemetryUpdate.h"
+#include "sim/GoToWaypoint.h"
 #include <tf/transform_broadcaster.h>
 #include <visualization_msgs/Marker.h>
-#include "AU_UAV_ROS/RequestWaypointInfo.h"
-#include "AU_UAV_ROS/standardFuncs.h"
+#include "sim/RequestWaypointInfo.h"
+#include "sim/standardFuncs.h"
 
 
 #define WEST_MOST_LONGITUDE -85.490356
@@ -73,7 +73,7 @@ double distance(struct waypoint first, struct waypoint second)
 }
 
 //this function is run everytime new telemetry information from any plane is recieved
-void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr& msg)
+void telemetryCallback(const sim::TelemetryUpdate::ConstPtr& msg)
 {
 	//TODO:Make this function do something useful, aka an avoidance algorithm
 	//ROS_INFO("Received update #[%lld]", msg->currentWaypointIndex);
@@ -208,7 +208,7 @@ void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr& msg)
 	marker_pub.publish(marker2);
 
 //request waypoint info to publish a square at each plane's next waypoint location.
-	AU_UAV_ROS::RequestWaypointInfo srv;
+	sim::RequestWaypointInfo srv;
 	srv.request.planeID = msg->planeID;
 	srv.request.isAvoidanceWaypoint = false;
 	srv.request.positionInQueue = 0;//msg->currentWaypointIndex;
@@ -297,7 +297,7 @@ int main(int argc, char **argv)
 	ros::Subscriber sub = n.subscribe("telemetry", 1000, telemetryCallback);
 
 	//subscribe to requestWaypointInfo service
-	requestWaypointInfoClient = n.serviceClient<AU_UAV_ROS::RequestWaypointInfo>("request_waypoint_info");
+	requestWaypointInfoClient = n.serviceClient<sim::RequestWaypointInfo>("request_waypoint_info");
 
 	//publish basic shapes to plane positions
   	marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 100);
