@@ -5,18 +5,6 @@ CMakeFiles/collisionAvoidance.dir/src/collisionAvoidance.o
  /home/eric/ros_workspace/sim/src/collisionAvoidance.cpp
  /opt/ros/fuerte/include/XmlRpcDecl.h
  /opt/ros/fuerte/include/XmlRpcValue.h
- /opt/ros/fuerte/include/geometry_msgs/Point.h
- /opt/ros/fuerte/include/geometry_msgs/PointStamped.h
- /opt/ros/fuerte/include/geometry_msgs/Pose.h
- /opt/ros/fuerte/include/geometry_msgs/PoseStamped.h
- /opt/ros/fuerte/include/geometry_msgs/Quaternion.h
- /opt/ros/fuerte/include/geometry_msgs/QuaternionStamped.h
- /opt/ros/fuerte/include/geometry_msgs/Transform.h
- /opt/ros/fuerte/include/geometry_msgs/TransformStamped.h
- /opt/ros/fuerte/include/geometry_msgs/Twist.h
- /opt/ros/fuerte/include/geometry_msgs/TwistStamped.h
- /opt/ros/fuerte/include/geometry_msgs/Vector3.h
- /opt/ros/fuerte/include/geometry_msgs/Vector3Stamped.h
  /opt/ros/fuerte/include/ros/advertise_options.h
  /opt/ros/fuerte/include/ros/advertise_service_options.h
  /opt/ros/fuerte/include/ros/assert.h
@@ -69,29 +57,7 @@ CMakeFiles/collisionAvoidance.dir/src/collisionAvoidance.o
  /opt/ros/fuerte/include/ros/wall_timer.h
  /opt/ros/fuerte/include/ros/wall_timer_options.h
  /opt/ros/fuerte/include/rosconsole/macros_generated.h
- /opt/ros/fuerte/include/std_msgs/ColorRGBA.h
  /opt/ros/fuerte/include/std_msgs/Header.h
- /opt/ros/fuerte/include/visualization_msgs/Marker.h
- /opt/ros/fuerte/stacks/bullet/include/LinearMath/btMatrix3x3.h
- /opt/ros/fuerte/stacks/bullet/include/LinearMath/btMinMax.h
- /opt/ros/fuerte/stacks/bullet/include/LinearMath/btQuadWord.h
- /opt/ros/fuerte/stacks/bullet/include/LinearMath/btQuaternion.h
- /opt/ros/fuerte/stacks/bullet/include/LinearMath/btScalar.h
- /opt/ros/fuerte/stacks/bullet/include/LinearMath/btTransform.h
- /opt/ros/fuerte/stacks/bullet/include/LinearMath/btVector3.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/LinearMath/Matrix3x3.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/LinearMath/MinMax.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/LinearMath/QuadWord.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/LinearMath/Quaternion.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/LinearMath/Scalar.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/LinearMath/Transform.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/LinearMath/Vector3.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/exceptions.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/tf.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/time_cache.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/transform_broadcaster.h
- /opt/ros/fuerte/stacks/geometry/tf/include/tf/transform_datatypes.h
- /opt/ros/fuerte/stacks/geometry/tf/msg_gen/cpp/include/tf/tfMessage.h
  include/sim/planeObject.h
  include/sim/ripna.h
  include/sim/standardDefs.h

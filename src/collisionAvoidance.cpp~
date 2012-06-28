@@ -21,8 +21,6 @@ This node controls the collision avoidance algorithm--an implementation of react
 #include "sim/GoToWaypoint.h"
 #include "sim/RequestWaypointInfo.h"
 #include "sim/standardDefs.h"
-#include <tf/transform_broadcaster.h>
-#include <visualization_msgs/Marker.h>
 
 //our headers
 #include "sim/planeObject.h"
@@ -38,38 +36,6 @@ This node controls the collision avoidance algorithm--an implementation of react
 
 #define DEGREES_TO_RADIANS (M_PI/180.0)
 #define RADIANS_TO_DEGREES (180.0/M_PI)
-
-//publisher is global so callbacks can access it
-ros::Publisher marker_pub;
-
-struct waypoint
-{
-	double latitude;
-	double longitude;
-	double altitude;
-};
-
-struct waypoint origin;
-
-double distance(struct waypoint first, struct waypoint second)
-{
-	//difference in latitudes in radians
-	double lat1 = first.latitude*DEGREES_TO_RADIANS;
-	double lat2 = second.latitude*DEGREES_TO_RADIANS;
-	double long1 = first.longitude*DEGREES_TO_RADIANS;
-	double long2 = second.longitude*DEGREES_TO_RADIANS;
-	
-	double deltaLat = lat2 - lat1;
-	double deltaLong = long2 - long1;
-	
-	//haversine crazy math, should probably be verified further beyond basic testing
-	//calculate distance from current position to destination
-	double a = pow(sin(deltaLat / 2.0), 2);
-	a = a + cos(lat1)*cos(lat2)*pow(sin(deltaLong/2.0), 2);
-	a = 2.0 * asin(sqrt(a));
-	
-	return EARTH_RADIUS * a;
-}
 
 
 /* ROS service clients for calling services from the coordinator */
@@ -199,7 +165,6 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 	}
 	else{
 		planes[planeID].update(*msg); /* update plane with new position */
-		ROS_WARN("Plane%d updated!!", planeID);
 		sim::waypoint newDest;
 
 		newDest.latitude = requestWaypointInfoSrv.response.latitude;
@@ -217,8 +182,6 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 	}
 
 	sim::waypoint newWaypoint;
-	
-	ROS_ERROR("Number of planes: %d PlaneID: %d", numPlanes, planeID);
 	
 	for (int n = 0; n < numPlanes; n++) {
 		/* This line of code calls the collision avoidance algorithm 
@@ -250,91 +213,6 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 		else {
 			ROS_ERROR("Did not receive response");
 		}
-
-		requestWaypointInfoSrv.request.planeID = currentPlaneID;
-		requestWaypointInfoSrv.request.isAvoidanceWaypoint = true;
-		requestWaypointInfoSrv.request.positionInQueue = 0;
-
-		if (requestWaypointInfoClient.call(requestWaypointInfoSrv) && (currentPlaneID == 5 || currentPlaneID == 15)){
-			ROS_WARN("Angles:%f, %f, %f", findAngle(planes[currentPlaneID].getCurrentLoc().latitude, planes[currentPlaneID].getCurrentLoc().longitude, requestWaypointInfoSrv.response.latitude, requestWaypointInfoSrv.response.longitude) , toCartesian(planes[currentPlaneID].getCurrentBearing()), findAngle(planes[currentPlaneID].getCurrentLoc().latitude, planes[currentPlaneID].getCurrentLoc().longitude, requestWaypointInfoSrv.response.latitude, requestWaypointInfoSrv.response.longitude) - toCartesian(planes[currentPlaneID].getCurrentBearing()));
-			ROS_WARN("Plane %d Destination:  Latitude: %f, Longitude: %f", currentPlaneID, requestWaypointInfoSrv.response.latitude, requestWaypointInfoSrv.response.longitude);
-		}
-
-		//request waypoint info to publish a square at each plane's next COLLISION AVOIDANCE waypoint location.
-		/*sim::RequestWaypointInfo srv2;
-		srv2.request.planeID = msg->planeID;	
-		srv2.request.isAvoidanceWaypoint = true;
-		srv2.request.positionInQueue = 0;//msg->currentWaypointIndex; */
-	
-		/*
-		static tf::TransformBroadcaster br;
-		tf::Transform transform;
-		char buffer [5];
-		sprintf(buffer, "%d",planeID);
-
-		//set up verticies of triangle
-		struct waypoint northsouthpointWP2;
-		northsouthpointWP2.latitude=newWaypoint.latitude;//srv->currentLatitude;
-		northsouthpointWP2.longitude=WEST_MOST_LONGITUDE;
-		struct waypoint eastwestpointWP2;
-		eastwestpointWP2.latitude=NORTH_MOST_LATITUDE;
-		eastwestpointWP2.longitude=newWaypoint.longitude;//srv->currentLongitude;
-
-		std::stringstream sstm4;
-		sstm4 << "CA" << buffer;
-
-
-		transform.setOrigin( tf::Vector3(distance(origin,eastwestpointWP2), -distance(origin,northsouthpointWP2),0));
-	  	transform.setRotation( tf::Quaternion(0, 0, 0) );
-	  	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", sstm4.str()));
-
-		//set shape
-		uint32_t shape = visualization_msgs::Marker::SPHERE;
-
-		visualization_msgs::Marker marker4;
-		// Set the frame ID and timestamp.  See the TF tutorials for information on these.
-		std::stringstream sstm5;
-		sstm5 << "/CA" << buffer;
-		marker4.header.frame_id = sstm5.str();
-
-		marker4.header.stamp = ros::Time::now();
-
-		// Set the namespace and id for this marker.  This serves to create a unique ID
-		// Any marker sent with the same namespace and id will overwrite the old one
-		marker4.ns = "basic_shapes";
-		marker4.id = planeID+3000;
-
-		// Set the marker type.  Initially this is CUBE, and cycles between that and SPHERE, ARROW, and CYLINDER
-		marker4.type = shape;
-
-		// Set the marker action.  Options are ADD and DELETE
-		marker4.action = visualization_msgs::Marker::ADD;
-
-		// Set the pose of the marker.  This is a full 6DOF pose relative to the frame/time specified in the header
-		marker4.pose.position.x = 0;
-		marker4.pose.position.y = 0;
-		marker4.pose.position.z = 0;
-		marker4.pose.orientation.x = 0.0;
-		marker4.pose.orientation.y = 0.0;
-		marker4.pose.orientation.z = 0.0;
-		marker4.pose.orientation.w = 1.0;
-
-		// Set the scale of the marker -- 1x1x1 here means 1m on a side
-		marker4.scale.x = 12.0;
-		marker4.scale.y = 12.0;
-		marker4.scale.z = 12.0;
-
-		// Set the color -- be sure to set alpha to something non-zero!
-		marker4.color.r = 1.0f;
-		marker4.color.g = 0.0f;
-		marker4.color.b = 0.0f;
-		marker4.color.a = 0.7f;
-
-		marker4.lifetime = ros::Duration();
-
-		// Publish the marker
-		marker_pub.publish(marker4);	
-		*/
 
 	}
 	
