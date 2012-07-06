@@ -17,7 +17,7 @@ This is the implementation of RIPNA.h.
 #include "sim/SimulatedPlane.h"		// for MAXIMUM_TURNING_ANGLE
 
 #define PLANE_MAX_TURN_ANGLE 22.5 //degrees / sec
-#define CHECK_ZONE 7.0*MPS_SPEED //meters
+#define CHECK_ZONE 10.0*MPS_SPEED //meters
 #define DANGER_ZEM 3.5*MPS_SPEED //meters
 #define MINIMUM_TURNING_RADIUS 28.64058013 //meters	
 #define DESIRED_SEPARATION 2.5*MPS_SPEED //meters
@@ -33,14 +33,35 @@ waypoint. */
 
 sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObject> &planes){
 	
-	ROS_WARN("-----------------------------------------------------");
+	//ROS_WARN("-----------------------------------------------------");
 	/* Find plane to avoid*/
 	sim::threatContainer greatestThreat = findGreatestThreat(plane1, planes);
 	
-	/* Unpack plane to avoid*/	
+
+	/* Unpack plane to avoid*/
+/*	!!!	ORIGINAL - CHANGED FOR ATTEMPT #2	!!!	
 	int threatID = greatestThreat.planeID;
 	double threatZEM = greatestThreat.ZEM;
 	double timeToGo = greatestThreat.timeToGo;
+*/
+
+/////////////////////// * ATTEMPT 2 * ///////////////////////////////
+	plane1.setTwoAgoThreatID(plane1.getOneAgoThreatID());
+	plane1.setTwoAgoZEM(plane1.getOneAgoZEM());
+	plane1.setTwoAgoTgo(plane1.getOneAgoTgo());
+
+	plane1.setOneAgoThreatID(plane1.getCurrentThreatID());
+	plane1.setOneAgoZEM(plane1.getCurrentZEM());
+	plane1.setOneAgoTgo(plane1.getCurrentTgo());
+
+	plane1.setCurrentThreatID(greatestThreat.planeID);
+	plane1.setCurrentZEM(greatestThreat.ZEM);
+	plane1.setCurrentTgo(greatestThreat.timeToGo);
+
+	int threatID = plane1.getCurrentThreatID();
+	double threatZEM = plane1.getCurrentZEM();
+	double timeToGo = plane1.getCurrentTgo();
+/////////////////////////////////////////////////////////////////////
 
 	/* If there is no plane to avoid, then take Dubin's path to the 
 	destination waypoint*/
@@ -57,16 +78,44 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 
 	/* Given turning radius and orientation of the plane, calculate 
 	next collision avoidance waypoint*/
-
-	//ROS_WARN("Plane %d's greatest threat is plane %d with ZEM = %f", plane1.getID(), threatID, threatZEM);
 	
-	ROS_WARN("Plane %d's bearing is %f Plane%d's bearing is %f ZEM: %f", plane1.getID(), plane1.getCurrentBearing(), threatID, planes[threatID].getCurrentBearing(), threatZEM);
-	ROS_WARN("Plane %d Latitude: %f, Longitude: %f", plane1.getID(), plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude);
-	ROS_WARN("Planes %d and %d should turnright:%d", plane1.getID(), threatID, turnRight);
+	//ROS_WARN("Plane %d's bearing is %f Plane%d's bearing is %f ZEM: %f", plane1.getID(), plane1.getCurrentBearing(), threatID, planes[threatID].getCurrentBearing(), threatZEM);
 
-	return calculateWaypoint(plane1, turningRadius, turnRight);
+
+/*	ATTEMPT #1
+	
+	//zigzagging
+	if (plane1.getLastGreatestThreat() == threatID && plane1.getLastZEM() > 0.5 * DANGER_ZEM && 
+		threatZEM > 0.5 * DANGER_ZEM && plane1.isBehind(planes[threatID])) {
+		ROS_WARN("ZIGZAG: Plane %d is behind Plane %d", plane1.getID(), threatID);
+	}
+
+	//zigzagging
+	plane1.setLastGreatestThreat(threatID);
+	plane1.setLastZEM(threatZEM);
+	plane1.setLastZEMTime();
+*/
+
+ROS_WARN("----------------------------------------------------------------------------");
+
+/////////////////////// * ATTEMPT 2 * ///////////////////////////////
+	if (plane1.getTwoAgoThreatID() == plane1.getCurrentThreatID() &&  plane1.getOneAgoThreatID() == -1 && 
+		planes[plane1.getCurrentThreatID()].getOneAgoThreatID() == -1) {
+
+		ROS_WARN("Plane %d has Plane %d as its greatest threat after 2 time steps", 
+			plane1.getID(), plane1.getCurrentThreatID());			
+		ROS_WARN("ZigZagging");
+			
+		if ( plane1.isBehind(planes[threatID]) ) {
+			plane1.setAntiZigzag(true);
+			return calculateWaypoint(plane1, turningRadius, turnRight, 3);
+
+		}
+	}
+/////////////////////////////////////////////////////////////////////
+
+	return calculateWaypoint(plane1, turningRadius, turnRight, 1);
 }
-
 	
 /* Function that returns the ID of the most dangerous neighboring plane and its ZEM */
 sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, PlaneObject> &planes){
@@ -177,23 +226,30 @@ false if otherwise. Takes original plane and its greatest threat as parameters *
 bool sim::shouldTurnRight(PlaneObject &plane1, PlaneObject &plane2) {
 	
 
-	/* For checking whether the plane should turn right or left */
-	double theta, theta_dot, R;
-	double cartBearing1 = toCartesian(plane1.getCurrentBearing());
-	double cartBearing2 = toCartesian(plane2.getCurrentBearing());
-	double V = MPS_SPEED;
-	
-	/* Calculate theta, theta1, and theta2. Theta is the cartesian angle
-	from 0 degrees (due East) to plane2 (using plane1 as the origin). This 
-	may be referred to as the LOS angle. */
-	theta = findAngle(plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude, 
-		plane2.getCurrentLoc().latitude, plane2.getCurrentLoc().longitude);
-	R = findDistance(plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude, 
-		plane2.getCurrentLoc().latitude, plane2.getCurrentLoc().longitude);
-	theta_dot = (V*sin((cartBearing2 - theta)*PI/180) - V*sin((cartBearing1 - theta)*PI/180)) / R;
+    /* For checking whether the plane should turn right or left */
+    double theta, theta_dot, theta2, thetaprime, R;
+    double cartBearing1 = toCartesian(plane1.getCurrentBearing());
+    double cartBearing2 = toCartesian(plane2.getCurrentBearing());
+    double V = MPS_SPEED;
+    
+    /* Calculate theta, theta1, and theta2. Theta is the cartesian angle
+    from 0 degrees (due East) to plane2 (using plane1 as the origin). This 
+    may be referred to as the LOS angle. */
+    theta = findAngle(plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude, 
+        plane2.getCurrentLoc().latitude, plane2.getCurrentLoc().longitude);
+    R = findDistance(plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude, 
+        plane2.getCurrentLoc().latitude, plane2.getCurrentLoc().longitude);
 
-	if (theta_dot >= 0) return true;
-	else return false;
+    //theta2 = theta + ((cartBearing2 > 0) - (cartBearing2 < 0)) * (180.0 - fabs(cartBearing2));
+    //theta = cartBearing2 - theta;
+
+    thetaprime = findAngle(plane2.getCurrentLoc().latitude, plane2.getCurrentLoc().longitude, plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude);
+    theta2 = thetaprime - cartBearing2;
+    theta_dot = (V*sin((theta2)*PI/180) - V*sin((cartBearing1 - theta)*PI/180)) / R;
+
+    
+    if (theta_dot >= 0) return true;
+    else return false;
 
 
 }
@@ -205,23 +261,27 @@ double sim::calculateTurningRadius(double ZEM){
 	return MINIMUM_TURNING_RADIUS*exp(l*ZEM/ds);
 }
 
-/* Link to help calculate intersection of circles and therefore the new 
-waypoint location: http://local.wasp.uwa.edu.au/~pbourke/geometry/2circle/ */
 
 /* Find the new collision avoidance waypoint for the plane to go to */
-sim::waypoint sim::calculateWaypoint(PlaneObject &plane1, double turningRadius, bool turnRight){
+sim::waypoint sim::calculateWaypoint(PlaneObject &plane1, double turningRadius, bool turnRight, int iter){
 
 	sim::waypoint wp;	
+	wp.longitude = plane1.getCurrentLoc().longitude;
+	wp.latitude = plane1.getCurrentLoc().latitude;
+	wp.altitude = plane1.getCurrentLoc().altitude;
+
 	double V = MPS_SPEED;
 	double delta_T = TIME_STEP;	
 	double cartBearing = toCartesian(plane1.getCurrentBearing())* PI/180;
 	double delta_psi = V / turningRadius * delta_T;
 	if (turnRight) delta_psi *= -1.0;
 	double psi = (cartBearing + delta_psi);
-	wp.longitude = plane1.getCurrentLoc().longitude + V*cos(psi)/DELTA_LON_TO_METERS;
-	wp.latitude = plane1.getCurrentLoc().latitude + V*sin(psi)/DELTA_LAT_TO_METERS;
-	wp.altitude = plane1.getCurrentLoc().altitude;
-	if (plane1.getID() == 5  || plane1.getID() == 15) 
+
+	for (int i = 0; i < iter; i++) {
+		wp.longitude += V*cos(psi)/DELTA_LON_TO_METERS;
+		wp.latitude += V*sin(psi)/DELTA_LAT_TO_METERS;
+		psi += delta_psi;
+	}
 	
 	return wp;
 }
@@ -263,7 +323,7 @@ sim::waypoint sim::takeDubinsPath(PlaneObject &plane1) {
 	/* If destination is inside circle, must fly opposite direction before we can reach destination*/
 	if (findDistance(circleCenter.latitude, circleCenter.longitude, wp.latitude, wp.longitude) < 
 			minTurningRadius) {
-		return calculateWaypoint(plane1, minTurningRadius, !destOnRight);
+		return calculateWaypoint(plane1, minTurningRadius, !destOnRight, 1);
 	}
 	else {
 		//we can simply pass the current waypoint because it's accessible
@@ -273,23 +333,6 @@ sim::waypoint sim::takeDubinsPath(PlaneObject &plane1) {
 }
 
 
-sim::coordinate sim::calculateCircleCenter(PlaneObject &plane, double turnRadius, bool turnRight) {
-	sim::coordinate circleCenter;
-	circleCenter.altitude = plane.getCurrentLoc().altitude;
-	double angle;
-	if (turnRight) {
-		angle = (toCartesian(plane.getCurrentBearing()) - 90) * PI/180.0; 
-	}
-	else {
-		angle = (toCartesian(plane.getCurrentBearing()) + 90) * PI/180.0;
-	}
-	double xdiff = turnRadius*cos(angle);
-	double ydiff = turnRadius*sin(angle);
-	circleCenter.longitude = plane.getCurrentLoc().longitude + xdiff/DELTA_LON_TO_METERS;
-	circleCenter.latitude = plane.getCurrentLoc().latitude + ydiff/DELTA_LAT_TO_METERS; 
-
-	return circleCenter;
-}
 
 
 sim::coordinate sim::calculateLoopingCircleCenter(PlaneObject &plane, double turnRadius, bool turnRight) {

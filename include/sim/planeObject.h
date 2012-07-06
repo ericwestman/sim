@@ -32,6 +32,30 @@ namespace sim {
 		void setCurrentBearing(double cBearing); 	/* set current bearing in the air */
 		void setSpeed(double speed);
 		void setDestination(const sim::waypoint &destination);
+
+/*	ATTEMPT #1
+		//zigzagging
+		void setLastGreatestThreat(int lgt);
+		void setLastZEM(int ZEM);
+		void setLastZEMTime();
+*/
+
+/////////////////////// * ATTEMPT 2 * ///////////////////////////////
+		void setTwoAgoThreatID(int ID);
+		void setTwoAgoZEM(double ZEM);
+		void setTwoAgoTgo(double Tgo);
+
+		void setOneAgoThreatID(int ID);
+		void setOneAgoZEM(double ZEM);
+		void setOneAgoTgo(double Tgo);
+
+		void setCurrentThreatID(int ID);
+		void setCurrentZEM(double ZEM);
+		void setCurrentTgo(double Tgo);
+
+		void setAntiZigzag(bool zig);
+/////////////////////////////////////////////////////////////////////
+
 		void updateTime(void); //changed function name from "update" to "updateTime"
 
 		/* Update the plane's data members with the information contained within the telemetry update */
@@ -46,6 +70,34 @@ namespace sim {
 		double getSpeed(void) const;
 		double getLastUpdateTime(void) const;
 		sim::waypoint getDestination(void) const;
+
+
+/*	ATTEMPT #1
+		//zigzagging
+		int getLastGreatestThreat(void) const;
+		int getLastZEM(void) const;
+		double getLastZEMTime(void) const;
+		
+		
+*/
+
+/////////////////////// * ATTEMPT 2 * ///////////////////////////////
+		int getTwoAgoThreatID(void) const;
+		double getTwoAgoZEM(void) const;
+		double getTwoAgoTgo(void) const;
+
+		int getOneAgoThreatID(void) const;
+		double getOneAgoZEM(void) const;
+		double getOneAgoTgo(void) const;
+
+		int getCurrentThreatID(void) const;
+		double getCurrentZEM(void) const;
+		double getCurrentTgo(void) const;
+		bool getAntiZigzag(void) const;
+		
+		bool isBehind(const sim::PlaneObject& plane) const;
+/////////////////////////////////////////////////////////////////////
+
 
 		/* Find distance between this plane and another plane */
 		double findDistance(const PlaneObject& plane) const;
@@ -75,6 +127,27 @@ namespace sim {
 		sim::coordinate currentLoc;
 		sim::waypoint destination;
 		
+/*	ATTEMPT #1
+		//zigzagging
+		int lastGreatestThreat;
+		int lastZEM;
+		double lastZEMTime;
+*/
+
+/////////////////////// * ATTEMPT 2 * ///////////////////////////////
+		int twoAgoThreatID;
+		double twoAgoZEM;
+		double twoAgoTgo;
+
+		int oneAgoThreatID;
+		double oneAgoZEM;
+		double oneAgoTgo;
+
+		int currentThreatID;
+		double currentZEM;
+		double currentTgo;
+		bool antiZigzag;
+////////////////////////////////////////////////////////////////////
 	};
 };
 

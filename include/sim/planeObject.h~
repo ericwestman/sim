@@ -5,11 +5,11 @@
 #ifndef PLANE_OBJECT_H
 #define PLANE_OBJECT_H
 
-#include "AU_UAV_ROS/TelemetryUpdate.h"
-#include "AU_UAV_ROS/standardDefs.h"
-#include "AU_UAV_ROS/standardFuncs.h"
+#include "sim/TelemetryUpdate.h"
+#include "sim/standardDefs.h"
+#include "sim/standardFuncs.h"
 
-namespace AU_UAV_ROS {
+namespace sim {
 
 	class PlaneObject {
 
@@ -22,7 +22,7 @@ namespace AU_UAV_ROS {
 		/*
 		Explicit value constructor: Takes a collision radius and a telemetry update and creates a new PlaneObject.
 		*/
-		PlaneObject(double cRadius, const AU_UAV_ROS::TelemetryUpdate &msg);
+		PlaneObject(double cRadius, const sim::TelemetryUpdate &msg);
 
 		/*mutator functions*/
 		void setID(int id);
@@ -31,21 +31,73 @@ namespace AU_UAV_ROS {
 		void setTargetBearing(double tBearing);		/* set bearing to destination */
 		void setCurrentBearing(double cBearing); 	/* set current bearing in the air */
 		void setSpeed(double speed);
-		void setDestination(const AU_UAV_ROS::waypoint &destination);
+		void setDestination(const sim::waypoint &destination);
+
+/*	ATTEMPT #1
+		//zigzagging
+		void setLastGreatestThreat(int lgt);
+		void setLastZEM(int ZEM);
+		void setLastZEMTime();
+*/
+
+/////////////////////// * ATTEMPT 2 * ///////////////////////////////
+		void setTwoAgoThreatID(int ID);
+		void setTwoAgoZEM(double ZEM);
+		void setTwoAgoTgo(double Tgo);
+
+		void setOneAgoThreatID(int ID);
+		void setOneAgoZEM(double ZEM);
+		void setOneAgoTgo(double Tgo);
+
+		void setCurrentThreatID(int ID);
+		void setCurrentZEM(double ZEM);
+		void setCurrentTgo(double Tgo);
+
+		void setAntiZigzag(bool zig);
+/////////////////////////////////////////////////////////////////////
+
 		void updateTime(void); //changed function name from "update" to "updateTime"
 
 		/* Update the plane's data members with the information contained within the telemetry update */
-		void update(const AU_UAV_ROS::TelemetryUpdate &msg);
+		void update(const sim::TelemetryUpdate &msg);
 
 		/* Accessor functions: Allow the client to access the plane's id, altitude, bearing, spped, etc. */
 		int getID(void) const;
-		AU_UAV_ROS::coordinate getPreviousLoc(void) const;
-		AU_UAV_ROS::coordinate getCurrentLoc(void) const;
+		sim::coordinate getPreviousLoc(void) const;
+		sim::coordinate getCurrentLoc(void) const;
 		double getTargetBearing(void) const;		/* get target bearing */
 		double getCurrentBearing(void) const;		/* get current bearing in the air */
 		double getSpeed(void) const;
 		double getLastUpdateTime(void) const;
-		AU_UAV_ROS::waypoint getDestination(void) const;
+		sim::waypoint getDestination(void) const;
+
+
+/*	ATTEMPT #1
+		//zigzagging
+		int getLastGreatestThreat(void) const;
+		int getLastZEM(void) const;
+		double getLastZEMTime(void) const;
+		
+		
+*/
+
+/////////////////////// * ATTEMPT 2 * ///////////////////////////////
+		int getTwoAgoThreatID(void) const;
+		double getTwoAgoZEM(void) const;
+		double getTwoAgoTgo(void) const;
+
+		int getOneAgoThreatID(void) const;
+		double getOneAgoZEM(void) const;
+		double getOneAgoTgo(void) const;
+
+		int getCurrentThreatID(void) const;
+		double getCurrentZEM(void) const;
+		double getCurrentTgo(void) const;
+		bool getAntiZigzag(void) const;
+		
+		bool isBehind(const sim::PlaneObject& plane) const;
+/////////////////////////////////////////////////////////////////////
+
 
 		/* Find distance between this plane and another plane */
 		double findDistance(const PlaneObject& plane) const;
@@ -71,10 +123,30 @@ namespace AU_UAV_ROS {
 		double currentBearing;		/* get current bearing in the air */
 		double speed;
 		double lastUpdateTime;
-		AU_UAV_ROS::coordinate previousLoc;	/*used to calculate currentBearing*/
-		AU_UAV_ROS::coordinate currentLoc;
-		AU_UAV_ROS::waypoint destination;
+		sim::coordinate previousLoc;	/*used to calculate currentBearing*/
+		sim::coordinate currentLoc;
+		sim::waypoint destination;
 		
+/*	ATTEMPT #1
+		//zigzagging
+		int lastGreatestThreat;
+		int lastZEM;
+		double lastZEMTime;
+*/
+
+/////////////////////// * ATTEMPT 2 * ///////////////////////////////
+		int twoAgoThreatID;
+		double twoAgoZEM;
+		double twoAgoTgo;
+
+		int oneAgoThreatID;
+		double oneAgoZEM;
+		double oneAgoTgo;
+
+		int currentThreatID;
+		double currentZEM;
+		double currentTgo;
+////////////////////////////////////////////////////////////////////
 	};
 };
 

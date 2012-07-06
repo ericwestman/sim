@@ -68,14 +68,9 @@ int main(int argc, char **argv)
 	ros::Subscriber sub = n.subscribe("telemetry", 1000, telemetryCallback);
 	goToWaypointClient = n.serviceClient<sim::GoToWaypoint>("go_to_waypoint");
 	requestWaypointInfoClient = n.serviceClient<sim::RequestWaypointInfo>("request_waypoint_info");
-	
-	//publish basic shapes to plane positions
-  	marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 100);
 
 	//initialize counting
 	count = 0;	
-	origin.latitude=NORTH_MOST_LATITUDE;
-	origin.longitude=WEST_MOST_LONGITUDE;
 	//needed for ROS to wait for callbacks
 	ros::spin();	
 

@@ -36,15 +36,11 @@ namespace sim{
 	/* This function takes the current plane, its calculated turning radius, 
 	and which direction it should turn in order to find the new collision 
 	avoidance waypoint for the plane to go to.*/
-	sim::waypoint calculateWaypoint(PlaneObject &plane1, double turningRadius, bool turnRight);
+	sim::waypoint calculateWaypoint(PlaneObject &plane1, double turningRadius, bool turnRight, int iter);
 
 	/*This function calculates the next waypoint for the plane based on its 
 	distance from its current waypoint and its bearing. */
 	sim::waypoint takeDubinsPath(PlaneObject &plane);
-	
-	/* This function takes a plane, its turning radius, and the direction to turn 
-	and returns the center of the circle of its turning radius. */
-	sim::coordinate calculateCircleCenter(PlaneObject &plane, double turnRadius, bool turnRight);
 
 	sim::coordinate calculateLoopingCircleCenter(PlaneObject &plane, double turnRadius, bool turnRight);
 };
