@@ -32,16 +32,6 @@ sim/DeleteSimulatedPlane.h
 sim/SaveFlightData.h
 /home/eric/ros_workspace/sim/src/sim/SaveFlightData.h
 
-/home/eric/ros_workspace/sim/src/sim/standardDefs.cpp
-stdio.h
--
-string.h
--
-ctype.h
--
-sim/standardDefs.h
-/home/eric/ros_workspace/sim/src/sim/sim/standardDefs.h
-
 /opt/ros/fuerte/include/XmlRpcDecl.h
 ros/macros.h
 -

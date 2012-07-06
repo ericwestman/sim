@@ -1,9 +1,7 @@
 <launch>
-	<node name="rviz" pkg="rviz" type="rviz" output="screen" />
-	<node name="rvizTranslator" pkg="AU_UAV_ROS" type="rvizTranslator" output="screen" />
-	<node name="collisionAvoidance" pkg="AU_UAV_ROS" type="collisionAvoidance"/>
-	<node name="coordinator" pkg="AU_UAV_ROS" type="coordinator"/>
-	<node name="KMLCreator" pkg="AU_UAV_ROS" type="KMLCreator" output="screen" />
-	<node name="simulator" pkg="AU_UAV_ROS" type="simulator" />
-	<node name="evaluator" pkg="AU_UAV_ROS" type="evaluator" output="screen" />
+	<node name="collisionAvoidance" pkg="sim" type="collisionAvoidance"/>
+	<node name="coordinator" pkg="sim" type="coordinator"/>
+	<node name="KMLCreator" pkg="sim" type="KMLCreator" output="screen" />
+	<node name="simulator" pkg="sim" type="simulator" />
+	<node name="evaluator" pkg="sim" type="evaluator" output="screen" />
 </launch>

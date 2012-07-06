@@ -34,14 +34,14 @@ rosbuild_gensrv()
 #target_link_libraries(example ${PROJECT_NAME})
 
 #C++ executables
-rosbuild_add_executable(simulator src/simulator.cpp src/AU_UAV_ROS/SimulatedPlane.cpp src/AU_UAV_ROS/standardDefs.cpp)
-rosbuild_add_executable(collisionAvoidance src/collisionAvoidance.cpp src/AU_UAV_ROS/standardDefs.cpp src/standardFuncs.cpp src/planeObject.cpp src/ripna.cpp src/vmath.cpp)
-rosbuild_add_executable(coordinator src/coordinator.cpp src/AU_UAV_ROS/PlaneCoordinator.cpp src/AU_UAV_ROS/standardDefs.cpp)
-rosbuild_add_executable(ControlMenu src/ControlMenu.cpp src/AU_UAV_ROS/standardDefs.cpp)
+rosbuild_add_executable(simulator src/simulator.cpp src/sim/SimulatedPlane.cpp src/sim/standardDefs.cpp)
+rosbuild_add_executable(collisionAvoidance src/collisionAvoidance.cpp src/sim/standardDefs.cpp src/standardFuncs.cpp src/planeObject.cpp src/ripna.cpp src/vmath.cpp)
+rosbuild_add_executable(coordinator src/coordinator.cpp src/sim/PlaneCoordinator.cpp src/sim/standardDefs.cpp)
+rosbuild_add_executable(ControlMenu src/ControlMenu.cpp src/sim/standardDefs.cpp)
 rosbuild_add_executable(KMLCreator src/KMLCreator.cpp)
 rosbuild_add_executable(visualization src/visualization.cpp)
-rosbuild_add_executable(evaluator src/evaluator.cpp src/AU_UAV_ROS/standardDefs.cpp)
-rosbuild_add_executable(rvizTranslator src/rvizTranslator.cpp)
+rosbuild_add_executable(evaluator src/evaluator.cpp src/sim/standardDefs.cpp)
+#rosbuild_add_executable(rvizTranslator src/rvizTranslator.cpp)
 
 #JAVA executables
 #rospack_add_java_executable(XBeeIO com/GCS/xbee/XBeeGCS)

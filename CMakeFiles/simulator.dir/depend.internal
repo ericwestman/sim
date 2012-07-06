@@ -51,6 +51,7 @@ CMakeFiles/simulator.dir/src/simulator.o
  /opt/ros/fuerte/include/ros/message.h
  /opt/ros/fuerte/include/ros/message_event.h
  /opt/ros/fuerte/include/ros/message_forward.h
+ /opt/ros/fuerte/include/ros/message_operations.h
  /opt/ros/fuerte/include/ros/message_traits.h
  /opt/ros/fuerte/include/ros/names.h
  /opt/ros/fuerte/include/ros/node_handle.h
@@ -86,3 +87,11 @@ CMakeFiles/simulator.dir/src/simulator.o
  /opt/ros/fuerte/include/ros/wall_timer.h
  /opt/ros/fuerte/include/ros/wall_timer_options.h
  /opt/ros/fuerte/include/rosconsole/macros_generated.h
+ /opt/ros/fuerte/include/std_msgs/Header.h
+ include/sim/SimulatedPlane.h
+ include/sim/standardDefs.h
+ msg_gen/cpp/include/sim/Command.h
+ msg_gen/cpp/include/sim/TelemetryUpdate.h
+ srv_gen/cpp/include/sim/CreateSimulatedPlane.h
+ srv_gen/cpp/include/sim/DeleteSimulatedPlane.h
+ srv_gen/cpp/include/sim/RequestPlaneID.h

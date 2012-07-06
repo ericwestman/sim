@@ -14,15 +14,15 @@ functions on that data.
 //ROS headers
 #include "ros/ros.h"
 #include "ros/package.h"
-#include "AU_UAV_ROS/standardDefs.h"
-#include "AU_UAV_ROS/TelemetryUpdate.h"
-#include "AU_UAV_ROS/LoadCourse.h"
-#include "AU_UAV_ROS/CreateSimulatedPlane.h"
-#include "AU_UAV_ROS/DeleteSimulatedPlane.h"
-#include "AU_UAV_ROS/SaveFlightData.h"
+#include "sim/standardDefs.h"
+#include "sim/TelemetryUpdate.h"
+#include "sim/LoadCourse.h"
+#include "sim/CreateSimulatedPlane.h"
+#include "sim/DeleteSimulatedPlane.h"
+#include "sim/SaveFlightData.h"
 
 //USER DEFINED EVALUATION SETTINGS
-#define TIME_LIMIT 600 //10 minutes
+#define TIME_LIMIT 120 //10 minutes
 #define WAYPOINT_SCORE 5 //5 points for each waypoint reached
 #define CONFLICT_SCORE -1 //-1 point for each conflict during flight
 
@@ -37,11 +37,11 @@ ros::ServiceClient loadCourseClient;
 ros::ServiceClient saveFlightDataClient;
 
 //keep all our updates listed here
-std::map<int, AU_UAV_ROS::TelemetryUpdate> previousUpdatesMap;
-std::map<int, AU_UAV_ROS::TelemetryUpdate> latestUpdatesMap;
+std::map<int, sim::TelemetryUpdate> previousUpdatesMap;
+std::map<int, sim::TelemetryUpdate> latestUpdatesMap;
 
 //the list of waypoints to go at
-std::map<int, std::queue<AU_UAV_ROS::waypoint> > waypointQueues;
+std::map<int, std::queue<sim::waypoint> > waypointQueues;
 
 //when our program starts
 ros::Time startTime;
@@ -117,7 +117,7 @@ void endEvaluation()
 {
 	//open our scoring file
 	FILE *fp;
-	fp = fopen((ros::package::getPath("AU_UAV_ROS")+"/scores/"+scoresheetFilename+".score").c_str(), "w");
+	fp = fopen((ros::package::getPath("sim")+"/scores/"+scoresheetFilename+".score").c_str(), "w");
 	
 	//make sure we got a good open
 	if(fp == NULL)
@@ -172,7 +172,7 @@ void endEvaluation()
 	}
 	
 	//try to tell the KML Creator to stop
-	AU_UAV_ROS::SaveFlightData srv;
+	sim::SaveFlightData srv;
 	srv.request.filename = (std::string(scoresheetFilename)+".kml");
 	if(saveFlightDataClient.call(srv))
 	{
@@ -196,7 +196,7 @@ bool createCourseUAVs(std::string filename)
 {
 	//open our file
 	FILE *fp;
-	fp = fopen((ros::package::getPath("AU_UAV_ROS")+"/courses/"+filename).c_str(), "r");
+	fp = fopen((ros::package::getPath("sim")+"/courses/"+filename).c_str(), "r");
 	
 	//check for a good file open
 	if(fp != NULL)
@@ -216,7 +216,7 @@ bool createCourseUAVs(std::string filename)
 			{
 				//set some invalid defaults
 				int planeID = -1;
-				struct AU_UAV_ROS::waypoint temp;
+				struct sim::waypoint temp;
 				temp.latitude = temp.longitude = temp.altitude = -1000;
 				
 				//parse the string
@@ -240,7 +240,7 @@ bool createCourseUAVs(std::string filename)
 					isFirstPoint[planeID] = true;
 					
 					//this is the first time we've seen this ID in the file, attempt to create it
-					AU_UAV_ROS::CreateSimulatedPlane srv;
+					sim::CreateSimulatedPlane srv;
 					srv.request.startingLatitude = temp.latitude;
 					srv.request.startingLongitude = temp.longitude;
 					srv.request.startingAltitude = temp.altitude;
@@ -263,12 +263,12 @@ bool createCourseUAVs(std::string filename)
 					maxAlivePlane = planeID;
 					
 					//set up some base values for a new plane
-					latestUpdatesMap[planeID] = AU_UAV_ROS::TelemetryUpdate();
+					latestUpdatesMap[planeID] = sim::TelemetryUpdate();
 					latestUpdatesMap[planeID].currentLatitude = temp.latitude;
 					latestUpdatesMap[planeID].currentLongitude = temp.longitude;
 					latestUpdatesMap[planeID].currentAltitude = temp.altitude;
 					
-					previousUpdatesMap[planeID] = AU_UAV_ROS::TelemetryUpdate();
+					previousUpdatesMap[planeID] = sim::TelemetryUpdate();
 					previousUpdatesMap[planeID].currentLatitude = temp.latitude;
 					previousUpdatesMap[planeID].currentLongitude = temp.longitude;
 					previousUpdatesMap[planeID].currentAltitude = temp.altitude;
@@ -306,7 +306,7 @@ telemetryCallback
 This is called whenever a new telemetry message is received.  We should store this any waypoint info received
 and perform analysis on it once all planes have received new data.
 */
-void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr& msg)
+void telemetryCallback(const sim::TelemetryUpdate::ConstPtr& msg)
 {
 	//make sure the sim isn't lagging somehow and still reporting dead planes
 	if(isDead[msg->planeID]) return;
@@ -321,7 +321,7 @@ void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr& msg)
 		//get the current time
 		delta = ros::Time::now() - startTime;
 		
-		struct AU_UAV_ROS::waypoint current, other;
+		struct sim::waypoint current, other;
 		//perform calculations on each plane
 		for(int id = 0; id <= lastPlaneID; id++)
 		{
@@ -346,7 +346,7 @@ void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr& msg)
 			while(!waypointQueues[id].empty() && distanceBetween(waypointQueues[id].front(), current) < COLLISION_THRESHOLD)
 			{
 				//the front item is reached, pop it and increase our waypoints reached
-				struct AU_UAV_ROS::waypoint temp = waypointQueues[id].front();
+				struct sim::waypoint temp = waypointQueues[id].front();
 				waypointQueues[id].pop();
 			
 				if(waypointQueues[id].empty())
@@ -418,7 +418,7 @@ void telemetryCallback(const AU_UAV_ROS::TelemetryUpdate::ConstPtr& msg)
 			{
 				//delete the simulated plane
 				//construct the service request
-				AU_UAV_ROS::DeleteSimulatedPlane srv;
+				sim::DeleteSimulatedPlane srv;
 				srv.request.planeID = id;
 				
 				//send the request
@@ -476,11 +476,11 @@ int main(int argc, char **argv)
 	ros::Subscriber sub = n.subscribe("telemetry", 1000, telemetryCallback);
 	
 	//set up ROS services
-	AU_UAV_ROS::LoadCourse srv;
-	createSimulatedPlaneClient = n.serviceClient<AU_UAV_ROS::CreateSimulatedPlane>("create_simulated_plane");
-	deleteSimulatedPlaneClient = n.serviceClient<AU_UAV_ROS::DeleteSimulatedPlane>("delete_simulated_plane");
-	loadCourseClient = n.serviceClient<AU_UAV_ROS::LoadCourse>("load_course");
-	saveFlightDataClient = n.serviceClient<AU_UAV_ROS::SaveFlightData>("save_flight_data");
+	sim::LoadCourse srv;
+	createSimulatedPlaneClient = n.serviceClient<sim::CreateSimulatedPlane>("create_simulated_plane");
+	deleteSimulatedPlaneClient = n.serviceClient<sim::DeleteSimulatedPlane>("delete_simulated_plane");
+	loadCourseClient = n.serviceClient<sim::LoadCourse>("load_course");
+	saveFlightDataClient = n.serviceClient<sim::SaveFlightData>("save_flight_data");
 	
 	//make sure all other nodes have time to activate
 	sleep(1);

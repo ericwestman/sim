@@ -33,7 +33,7 @@ waypoint. */
 
 sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObject> &planes){
 	
-	//ROS_WARN("-----------------------------------------------------");
+	ROS_WARN("-----------------------------------------------------");
 	/* Find plane to avoid*/
 	sim::threatContainer greatestThreat = findGreatestThreat(plane1, planes);
 	
@@ -58,15 +58,11 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 	/* Given turning radius and orientation of the plane, calculate 
 	next collision avoidance waypoint*/
 
-	if ((plane1.getID() == 5 && threatID == 15 ) || (plane1.getID() == 15 && threatID == 5)) {
 	//ROS_WARN("Plane %d's greatest threat is plane %d with ZEM = %f", plane1.getID(), threatID, threatZEM);
 	
-	ROS_WARN("------------------------------------------------------------------------");
 	ROS_WARN("Plane %d's bearing is %f Plane%d's bearing is %f ZEM: %f", plane1.getID(), plane1.getCurrentBearing(), threatID, planes[threatID].getCurrentBearing(), threatZEM);
 	ROS_WARN("Plane %d Latitude: %f, Longitude: %f", plane1.getID(), plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude);
 	ROS_WARN("Planes %d and %d should turnright:%d", plane1.getID(), threatID, turnRight);
-
-	}
 
 	return calculateWaypoint(plane1, turningRadius, turnRight);
 }
@@ -226,12 +222,6 @@ sim::waypoint sim::calculateWaypoint(PlaneObject &plane1, double turningRadius, 
 	wp.latitude = plane1.getCurrentLoc().latitude + V*sin(psi)/DELTA_LAT_TO_METERS;
 	wp.altitude = plane1.getCurrentLoc().altitude;
 	if (plane1.getID() == 5  || plane1.getID() == 15) 
-	ROS_WARN("Angle to WP: %f",  findAngle(plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude, wp.latitude, wp.longitude) - toCartesian(plane1.getCurrentBearing()));
-	//ROS_WARN("Plane %d Destination:  Latitude: %f, Longitude: %f", plane1.getID(), wp.latitude, wp.longitude);
-
-	
-
-	//ROS_WARN("Plane%d calc lat: %f lon: %f w/ act lat: %f lon: %f", plane1.getID(), wp.latitude, wp.longitude, plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude);
 	
 	return wp;
 }

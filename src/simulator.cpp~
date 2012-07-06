@@ -12,26 +12,26 @@ understand how this works.
 
 //ROS headers
 #include "ros/ros.h"
-#include "AU_UAV_ROS/standardDefs.h"
-#include "AU_UAV_ROS/TelemetryUpdate.h"
-#include "AU_UAV_ROS/Command.h"
-#include "AU_UAV_ROS/RequestPlaneID.h"
-#include "AU_UAV_ROS/CreateSimulatedPlane.h"
-#include "AU_UAV_ROS/DeleteSimulatedPlane.h"
-#include "AU_UAV_ROS/SimulatedPlane.h"
+#include "sim/standardDefs.h"
+#include "sim/TelemetryUpdate.h"
+#include "sim/Command.h"
+#include "sim/RequestPlaneID.h"
+#include "sim/CreateSimulatedPlane.h"
+#include "sim/DeleteSimulatedPlane.h"
+#include "sim/SimulatedPlane.h"
 
 //Coordinator Services
 ros::ServiceClient requestPlaneIDClient;
 
 //a map of plane IDs to the Simulated Plane with that ID
-std::map<int, AU_UAV_ROS::SimulatedPlane> simPlaneMap;
+std::map<int, sim::SimulatedPlane> simPlaneMap;
 
 /*
 commandCallback:
 This is the callback in place to handle any commands sent.  Note that not all commands will be destined for
 the simulator so it must be verified before proceeding with any commands.
 */
-void commandCallback(const AU_UAV_ROS::Command::ConstPtr& msg)
+void commandCallback(const sim::Command::ConstPtr& msg)
 {
 	//check to make sure that the plane ID is in the simulator
 	if(simPlaneMap.find(msg->planeID) != simPlaneMap.end())
@@ -52,10 +52,10 @@ createSimulatePlaneCallback
 This is the callback used to handle any users wishing to create a new plane.  This could be used for setting
 up a course as well.
 */
-bool createSimulatedPlaneCallback(AU_UAV_ROS::CreateSimulatedPlane::Request &req, AU_UAV_ROS::CreateSimulatedPlane::Response &res)
+bool createSimulatedPlaneCallback(sim::CreateSimulatedPlane::Request &req, sim::CreateSimulatedPlane::Response &res)
 {
 	//create a service to get a plane ID to use
-	AU_UAV_ROS::RequestPlaneID srv;
+	sim::RequestPlaneID srv;
 	srv.request.requestedID = req.requestedID;
 	
 	//check to make sure the client call worked (regardless of return values from service)
@@ -70,8 +70,8 @@ bool createSimulatedPlaneCallback(AU_UAV_ROS::CreateSimulatedPlane::Request &req
 		}
 		
 		//create and add our plane to the list of simulated planes
-		//AU_UAV_ROS::SimulatedPlane newPlane(srv.response.planeID, req);
-		simPlaneMap[srv.response.planeID] = AU_UAV_ROS::SimulatedPlane(srv.response.planeID, req);
+		//sim::SimulatedPlane newPlane(srv.response.planeID, req);
+		simPlaneMap[srv.response.planeID] = sim::SimulatedPlane(srv.response.planeID, req);
 		
 		//plane created successfully
 		return true;
@@ -89,7 +89,7 @@ deleteSimulatedPlaneCallback
 This callback will remove a plane from the simulator and stop it from sending updates. NOTE: this does not
 free up that plane ID in the coordinator.  New planes will still have higher IDs.
 */
-bool deleteSimulatedPlaneCallback(AU_UAV_ROS::DeleteSimulatedPlane::Request &req, AU_UAV_ROS::DeleteSimulatedPlane::Response &res)
+bool deleteSimulatedPlaneCallback(sim::DeleteSimulatedPlane::Request &req, sim::DeleteSimulatedPlane::Response &res)
 {
 	//check to make sure the plane is simulated
 	if(simPlaneMap.find(req.planeID) != simPlaneMap.end())
@@ -116,18 +116,18 @@ int main(int argc, char **argv)
 	ros::Subscriber sub = n.subscribe("commands", 1000, commandCallback);
 	
 	//setup publishing to telemetry message
-	ros::Publisher telemetryPub = n.advertise<AU_UAV_ROS::TelemetryUpdate>("telemetry", 1000);
+	ros::Publisher telemetryPub = n.advertise<sim::TelemetryUpdate>("telemetry", 1000);
 	
 	//setup server services
 	ros::ServiceServer createSimulatedPlaneService = n.advertiseService("create_simulated_plane", createSimulatedPlaneCallback);
 	ros::ServiceServer deleteSimulatedPlaneService = n.advertiseService("delete_simulated_plane", deleteSimulatedPlaneCallback);
 	
 	//setup client services
-	requestPlaneIDClient = n.serviceClient<AU_UAV_ROS::RequestPlaneID>("request_plane_ID");
+	requestPlaneIDClient = n.serviceClient<sim::RequestPlaneID>("request_plane_ID");
 	
 	//TODO:check for validity of 1 Hz
 	//currently updates at 1 Hz, based of Justin Paladino'sestimate of approximately 1 update/sec
-	int loopRate = 1;
+	int loopRate = 5;
 	int loopMultiple = 10;
 	int loopPosition = 0;
 	
@@ -144,8 +144,8 @@ int main(int argc, char **argv)
 		if(loopPosition == 0)
 		{
 			//prep to send some updates
-			AU_UAV_ROS::TelemetryUpdate tUpdate;
-			std::map<int, AU_UAV_ROS::SimulatedPlane>::iterator ii;
+			sim::TelemetryUpdate tUpdate;
+			std::map<int, sim::SimulatedPlane>::iterator ii;
 		
 			//iterate through all simulated planes and generate an update for each
 			for(ii = simPlaneMap.begin(); ii != simPlaneMap.end(); ii++)

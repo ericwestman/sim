@@ -50,6 +50,7 @@ CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/master.h
 CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/message.h
 CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/message_event.h
 CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/message_forward.h
+CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/message_operations.h
 CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/message_traits.h
 CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/names.h
 CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/node_handle.h
@@ -85,4 +86,12 @@ CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/types.h
 CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/wall_timer.h
 CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/ros/wall_timer_options.h
 CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/rosconsole/macros_generated.h
+CMakeFiles/simulator.dir/src/simulator.o: /opt/ros/fuerte/include/std_msgs/Header.h
+CMakeFiles/simulator.dir/src/simulator.o: include/sim/SimulatedPlane.h
+CMakeFiles/simulator.dir/src/simulator.o: include/sim/standardDefs.h
+CMakeFiles/simulator.dir/src/simulator.o: msg_gen/cpp/include/sim/Command.h
+CMakeFiles/simulator.dir/src/simulator.o: msg_gen/cpp/include/sim/TelemetryUpdate.h
+CMakeFiles/simulator.dir/src/simulator.o: srv_gen/cpp/include/sim/CreateSimulatedPlane.h
+CMakeFiles/simulator.dir/src/simulator.o: srv_gen/cpp/include/sim/DeleteSimulatedPlane.h
+CMakeFiles/simulator.dir/src/simulator.o: srv_gen/cpp/include/sim/RequestPlaneID.h
 
