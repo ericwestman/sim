@@ -48,6 +48,7 @@ sim::PlaneObject::PlaneObject(void) {
 	this->currentThreatID = -1;
 	this->currentZEM = -1;
 	this->currentTgo = -1;
+	this->antiZigzag = 0;
 /////////////////////////////////////////////////////////////////////
 
 }
@@ -90,6 +91,7 @@ sim::PlaneObject::PlaneObject(double cRadius, const sim::TelemetryUpdate &msg) {
 	this->currentThreatID = -1;
 	this->currentZEM = -1;
 	this->currentTgo = -1;
+	this->antiZigzag = 0;
 /////////////////////////////////////////////////////////////////////
 
 }
@@ -174,7 +176,7 @@ void sim::PlaneObject::setCurrentTgo(double Tgo) {
 	this->currentTgo = Tgo;
 }
 
-void sim::PlaneObject::setAntiZigzag(bool zig){
+void sim::PlaneObject::setAntiZigzag(int zig){
 	this->antiZigzag = zig;
 }
 /////////////////////////////////////////////////////////////////////
@@ -285,7 +287,7 @@ double sim::PlaneObject::getCurrentTgo(void) const {
 	return this->currentTgo;
 }
 
-bool sim::PlaneObject::getAntiZigzag(void) const {
+int sim::PlaneObject::getAntiZigzag(void) const {
 	return this->antiZigzag;
 }
 /////////////////////////////////////////////////////////////////////
@@ -321,15 +323,16 @@ double sim::PlaneObject::findAngle(double lat2, double lon2) const {
 }
 
 
-bool sim::PlaneObject::isBehind(const sim::PlaneObject& plane2) const {
-	double theta = findAngle(plane2.getCurrentLoc().latitude, plane2.getCurrentLoc().longitude);
-	double cartBearing1 = toCartesian(this->currentBearing);
-	double cartBearing2 = toCartesian(plane2.getCurrentBearing());
-	double theta1 = cartBearing1 - theta;
-	double theta2 = cartBearing2 - theta;
+bool sim::PlaneObject::isBehind(const sim::PlaneObject& plane2, bool turnRight) const {
 
-	if (theta1 > theta2) return false;
-	return true;
+    	double theta = this->findAngle(plane2.getCurrentLoc().latitude, plane2.getCurrentLoc().longitude);
+	double cartBearing = toCartesian(this->currentBearing);
+	double cartBearingBar = manipulateAngle(cartBearing - 180.0);
+
+	if (turnRight && theta < cartBearing && theta > cartBearingBar) return true;
+	else if (turnRight) return false;
+	else if (theta > cartBearing && theta < cartBearingBar) return true;
+	else return false;
 }
 
 

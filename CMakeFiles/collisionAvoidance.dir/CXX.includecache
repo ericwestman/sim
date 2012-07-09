@@ -42,18 +42,6 @@ sim/standardFuncs.h
 sim/ripna.h
 /home/eric/ros_workspace/sim/src/sim/ripna.h
 
-/home/eric/ros_workspace/sim/src/planeObject.cpp
-ros/ros.h
-/home/eric/ros_workspace/sim/src/ros/ros.h
-sim/planeObject.h
-/home/eric/ros_workspace/sim/src/sim/planeObject.h
-sim/SimulatedPlane.h
-/home/eric/ros_workspace/sim/src/sim/SimulatedPlane.h
-math.h
--
-sim/standardFuncs.h
-/home/eric/ros_workspace/sim/src/sim/standardFuncs.h
-
 /home/eric/ros_workspace/sim/src/ripna.cpp
 math.h
 -

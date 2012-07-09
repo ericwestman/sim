@@ -53,7 +53,7 @@ namespace sim {
 		void setCurrentZEM(double ZEM);
 		void setCurrentTgo(double Tgo);
 
-		void setAntiZigzag(bool zig);
+		void setAntiZigzag(int zig);
 /////////////////////////////////////////////////////////////////////
 
 		void updateTime(void); //changed function name from "update" to "updateTime"
@@ -93,9 +93,9 @@ namespace sim {
 		int getCurrentThreatID(void) const;
 		double getCurrentZEM(void) const;
 		double getCurrentTgo(void) const;
-		bool getAntiZigzag(void) const;
+		int getAntiZigzag(void) const;
 		
-		bool isBehind(const sim::PlaneObject& plane) const;
+		bool isBehind(const sim::PlaneObject& plane, bool turnRight) const;
 /////////////////////////////////////////////////////////////////////
 
 
@@ -146,7 +146,7 @@ namespace sim {
 		int currentThreatID;
 		double currentZEM;
 		double currentTgo;
-		bool antiZigzag;
+		int antiZigzag;
 ////////////////////////////////////////////////////////////////////
 	};
 };

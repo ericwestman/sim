@@ -187,12 +187,19 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 		currentPlaneID = n;
 		
 		newWaypoint = findNewWaypoint(planes[currentPlaneID], planes);
+
 	
 		if ((requestWaypointInfoSrv.response.longitude == newWaypoint.longitude) 
 			&& (requestWaypointInfoSrv.response.latitude == newWaypoint.latitude)) {
-		return;
+		continue;
 		}	
 
+		ROS_WARN("AntiZigzag: %d", planes[n].getAntiZigzag());
+		if (planes[n].getAntiZigzag() == 1) continue;
+		if (planes[n].getAntiZigzag() == 2) {
+			ROS_WARN("HEY DUDE IT WORKS");
+			planes[n].setAntiZigzag(1);
+		}
 		/* Fill in goToWaypointSrv request with new waypoint information*/
 		goToWaypointSrv.request.planeID = currentPlaneID;
 		goToWaypointSrv.request.latitude = newWaypoint.latitude;

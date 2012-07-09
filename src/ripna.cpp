@@ -63,6 +63,10 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 	double timeToGo = plane1.getCurrentTgo();
 /////////////////////////////////////////////////////////////////////
 
+	if (plane1.getAntiZigzag() == 1 && threatID > -1) {
+		plane1.setAntiZigzag(0);
+	}
+
 	/* If there is no plane to avoid, then take Dubin's path to the 
 	destination waypoint*/
 	if (((threatID < 0) && (threatZEM < 0)) || timeToGo > MINIMUM_TIME_TO_GO) {
@@ -96,19 +100,22 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 	plane1.setLastZEMTime();
 */
 
-ROS_WARN("----------------------------------------------------------------------------");
+//ROS_WARN("----------------------------------------------------------------------------");
 
 /////////////////////// * ATTEMPT 2 * ///////////////////////////////
 	if (plane1.getTwoAgoThreatID() == plane1.getCurrentThreatID() &&  plane1.getOneAgoThreatID() == -1 && 
 		planes[plane1.getCurrentThreatID()].getOneAgoThreatID() == -1) {
-
-		ROS_WARN("Plane %d has Plane %d as its greatest threat after 2 time steps", 
-			plane1.getID(), plane1.getCurrentThreatID());			
-		ROS_WARN("ZigZagging");
 			
-		if ( plane1.isBehind(planes[threatID]) ) {
-			plane1.setAntiZigzag(true);
-			return calculateWaypoint(plane1, turningRadius, turnRight, 3);
+		if ( plane1.isBehind(planes[threatID], turnRight) ) {
+			plane1.setAntiZigzag(2);
+			sim::waypoint wp = calculateWaypoint(plane1, turningRadius, turnRight, 3);
+			ROS_WARN("------------- Plane %d is behind plane %d --------------", plane1.getID(), threatID);			
+			ROS_WARN("Turn Right? %d", turnRight);
+			ROS_WARN("Current Destination Latitude: %f | Longitude: %f", plane1.getDestination().latitude, plane1.getDestination().longitude);
+			ROS_WARN("WP Latitude: %f | Longitude: %f", wp.latitude, wp.longitude);
+			ROS_WARN("Previous Latitude: %f | Longitude: %f", plane1.getPreviousLoc().latitude, plane1.getPreviousLoc().longitude);
+			ROS_WARN("Current Latitude: %f | Longitude: %f", plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude);
+			return wp;
 		}
 	}
 /////////////////////////////////////////////////////////////////////
@@ -163,12 +170,6 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 		
 		if (distanceBetween > CHECK_ZONE || plane1.getID() == ID) continue;
 
-		/*else if (distanceBetween < MPS_SPEED) {
-			planeToAvoid = ID;
-			mostDangerousZEM = 0;
-			minimumTimeToGo = 0.1;
-			break;
-		}*/	
 
 		/* Making a position vector representation of plane2*/
 		magnitude2 = findDistance(origin.latitude, origin.longitude, 
