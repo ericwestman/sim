@@ -79,7 +79,7 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 //ROS_WARN("----------------------------------------------------------------------------");
 
 
-	return calculateWaypoint(plane1, turningRadius, turnRight, 2);
+	return calculateWaypoint(plane1, turningRadius, turnRight, 1);
 }
 	
 /* Function that returns the ID of the most dangerous neighboring plane and its ZEM */
