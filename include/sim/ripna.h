@@ -9,6 +9,7 @@ This is the header file for RIPNA.cpp, which implements the functions declared h
 #define COLLISION_AVOIDANCE_ALGORITHM_H
 
 #include <map>
+#include <queue>
 
 #include "sim/planeObject.h"
 #include "sim/vmath.h"
@@ -19,7 +20,7 @@ namespace sim{
 	functions outlined in this file to calculate a collision avoidance waypoint 
 	for the plane to travel to. If no collision avoidance or maneuvering is 
 	necessary, this functions returns the current destination waypoint */
-	sim::waypoint findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObject> &planes);
+	std::queue<sim::waypoint> findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObject> &planes);
 	
 	/*This function receives the current plane and a map of all of the planes 
 	in the airspace, and returns the ID of the plane which is the most imminent 

@@ -185,29 +185,33 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 		*/	
 
 		currentPlaneID = n;
-		
-		newWaypoint = findNewWaypoint(planes[currentPlaneID], planes);
+		sim::waypoint newWaypoint;
+		std::queue<sim::waypoint> waypointQueue = findNewWaypoint(planes[currentPlaneID], planes);
 
-	
-		if ((requestWaypointInfoSrv.response.longitude == newWaypoint.longitude) 
-			&& (requestWaypointInfoSrv.response.latitude == newWaypoint.latitude)) {
-		continue;
-		}	
+		while (!waypointQueue.empty()) {
+			newWaypoint = waypointQueue.front();
+			waypointQueue.pop();
+			if ((requestWaypointInfoSrv.response.longitude == newWaypoint.longitude) 
+				&& (requestWaypointInfoSrv.response.latitude == newWaypoint.latitude)) {
+			ROS_WARN("DOIWEIFOEJWK");
+			continue;
+			}	
 
-		/* Fill in goToWaypointSrv request with new waypoint information*/
-		goToWaypointSrv.request.planeID = currentPlaneID;
-		goToWaypointSrv.request.latitude = newWaypoint.latitude;
-		goToWaypointSrv.request.longitude = newWaypoint.longitude;
-		goToWaypointSrv.request.altitude = newWaypoint.altitude;
-		goToWaypointSrv.request.isAvoidanceManeuver = true; 
-		goToWaypointSrv.request.isNewQueue = true;
+			/* Fill in goToWaypointSrv request with new waypoint information*/
+			goToWaypointSrv.request.planeID = currentPlaneID;
+			goToWaypointSrv.request.latitude = newWaypoint.latitude;
+			goToWaypointSrv.request.longitude = newWaypoint.longitude;
+			goToWaypointSrv.request.altitude = newWaypoint.altitude;
+			goToWaypointSrv.request.isAvoidanceManeuver = true; 
+			goToWaypointSrv.request.isNewQueue = true;
 
-		if (goToWaypointClient.call(goToWaypointSrv)) {
-			count++;
-			ROS_INFO("Received response from service request %d", (count-1));
-		}
-		else {
-			ROS_ERROR("Did not receive response");
+			if (goToWaypointClient.call(goToWaypointSrv)) {
+				count++;
+				ROS_INFO("Received response from service request %d", (count-1));
+			}
+			else {
+				ROS_ERROR("Did not receive response");
+			}
 		}
 
 	}

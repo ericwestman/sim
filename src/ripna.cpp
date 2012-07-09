@@ -31,8 +31,9 @@ waypoint for the plane to travel to. If no collision avoidance
 maneuvers are necessary, the function returns the current destination 
 waypoint. */
 
-sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObject> &planes){
+std::queue<sim::waypoint> sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObject> &planes){
 	
+	std::queue<sim::waypoint> waypointQueue;
 	//ROS_WARN("-----------------------------------------------------");
 	/* Find plane to avoid*/
 	sim::threatContainer greatestThreat = findGreatestThreat(plane1, planes);
@@ -46,7 +47,8 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 	/* If there is no plane to avoid, then take Dubin's path to the 
 	destination waypoint*/
 	if (((threatID < 0) && (threatZEM < 0)) || timeToGo > MINIMUM_TIME_TO_GO) {
-		return takeDubinsPath(plane1);
+		waypointQueue.push(takeDubinsPath(plane1));
+		return waypointQueue;
 	}
 
 	/* If there is a plane to avoid, then figure out which direction it 
@@ -77,9 +79,11 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 */
 
 //ROS_WARN("----------------------------------------------------------------------------");
-
-
-	return calculateWaypoint(plane1, turningRadius, turnRight, 2);
+	
+	for (int i = 1; i <= 1; i++) {
+		waypointQueue.push(calculateWaypoint(plane1, turningRadius, turnRight, i));
+	}
+	return waypointQueue;
 }
 	
 /* Function that returns the ID of the most dangerous neighboring plane and its ZEM */
@@ -117,7 +121,7 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 	/* Declare variables needed for this loop*/
 	sim::mathVector pDiff;
 	sim::mathVector dDiff;
-	double timeToGo, zeroEffortMiss, distanceBetween, timeToDest;
+	double timeToGo, zeroEffortMiss, distanceBetween, timeToDest, bearingDiff;
 	std::map<int,sim::PlaneObject>::iterator it;
 	for ( it=planes.begin() ; it!= planes.end(); it++ ){
 		/* Unpacking plane to check*/		
@@ -150,25 +154,29 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 			2.0*(MPS_SPEED*timeToGo)*pDiff.dotProduct(dDiff) + 
 			pow(MPS_SPEED*timeToGo,2.0)*dDiff.dotProduct(dDiff));
 		
-		/* If the Zero Effort Miss  less than the minimum required 
-		separation, and the time to go is the least so far, then avoid this plane*/
-		//lastDangerFactor = dangerFactor;
-		//dangerFactor = 1.0 / ((zeroEffortMiss + 6.0) * (timeToGo - 1.0));
+	
+		if( zeroEffortMiss > DANGER_ZEM || timeToGo > minimumTimeToGo || timeToGo < 0 ) continue;
 
-		//ROS_WARN("DF = %f and lastDF = %f for planes %d and %d", dangerFactor, lastDangerFactor, plane1.getID(), plane2.getID());
-		if(zeroEffortMiss <= DANGER_ZEM && timeToGo < minimumTimeToGo && timeToGo > 0 /*&& dangerFactor > lastDangerFactor*/){
-			// If the plane is behind you, don't avoid it
-			if ( fabs(plane2.findAngle(plane1)*180.0/PI - toCartesian(plane1.getCurrentBearing())) > 35.0) {
-				timeToDest = plane1.findDistance(plane1.getDestination().latitude, 
-					plane1.getDestination().longitude) / MPS_SPEED;
-				/* If you're close to your destination and the other plane isn't
-				much of a threat, then don't avoid it */ 
-				if ( timeToDest < 5.0 && zeroEffortMiss > 3.0*MPS_SPEED ) continue;
-				planeToAvoid = ID;
-				mostDangerousZEM = zeroEffortMiss;
-				minimumTimeToGo = timeToGo;			
-			}
-		}
+		// If the plane is behind you, don't avoid it
+		if ( fabs(plane2.findAngle(plane1)*180.0/PI - toCartesian(plane1.getCurrentBearing())) < 35.0) continue;
+		
+
+		timeToDest = plane1.findDistance(plane1.getDestination().latitude, 
+			plane1.getDestination().longitude) / MPS_SPEED;
+
+		/* If you're close to your destination and the other plane isn't
+		much of a threat, then don't avoid it */ 
+		if ( timeToDest < 5.0 && zeroEffortMiss > 3.0*MPS_SPEED ) continue;
+
+		/* If they're likely to zigzag, don't avoid each other*/
+		bearingDiff = fabs(plane1.getCurrentBearing() - planes[ID].getCurrentBearing());
+		if ( plane1.findDistance(planes[ID]) > DANGER_ZEM &&  bearingDiff < 30.0) continue;
+
+		planeToAvoid = ID;
+		mostDangerousZEM = zeroEffortMiss;
+		minimumTimeToGo = timeToGo;	
+		
+		
 	}
 
 	sim::threatContainer greatestThreat;
