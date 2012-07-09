@@ -39,33 +39,9 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 	
 
 	/* Unpack plane to avoid*/
-/*	!!!	ORIGINAL - CHANGED FOR ATTEMPT #2	!!!	
 	int threatID = greatestThreat.planeID;
 	double threatZEM = greatestThreat.ZEM;
 	double timeToGo = greatestThreat.timeToGo;
-*/
-
-/////////////////////// * ATTEMPT 2 * ///////////////////////////////
-	plane1.setTwoAgoThreatID(plane1.getOneAgoThreatID());
-	plane1.setTwoAgoZEM(plane1.getOneAgoZEM());
-	plane1.setTwoAgoTgo(plane1.getOneAgoTgo());
-
-	plane1.setOneAgoThreatID(plane1.getCurrentThreatID());
-	plane1.setOneAgoZEM(plane1.getCurrentZEM());
-	plane1.setOneAgoTgo(plane1.getCurrentTgo());
-
-	plane1.setCurrentThreatID(greatestThreat.planeID);
-	plane1.setCurrentZEM(greatestThreat.ZEM);
-	plane1.setCurrentTgo(greatestThreat.timeToGo);
-
-	int threatID = plane1.getCurrentThreatID();
-	double threatZEM = plane1.getCurrentZEM();
-	double timeToGo = plane1.getCurrentTgo();
-/////////////////////////////////////////////////////////////////////
-
-	if (plane1.getAntiZigzag() == 1 && threatID > -1) {
-		plane1.setAntiZigzag(0);
-	}
 
 	/* If there is no plane to avoid, then take Dubin's path to the 
 	destination waypoint*/
@@ -102,25 +78,8 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 
 //ROS_WARN("----------------------------------------------------------------------------");
 
-/////////////////////// * ATTEMPT 2 * ///////////////////////////////
-	if (plane1.getTwoAgoThreatID() == plane1.getCurrentThreatID() &&  plane1.getOneAgoThreatID() == -1 && 
-		planes[plane1.getCurrentThreatID()].getOneAgoThreatID() == -1) {
-			
-		if ( plane1.isBehind(planes[threatID], turnRight) ) {
-			plane1.setAntiZigzag(2);
-			sim::waypoint wp = calculateWaypoint(plane1, turningRadius, turnRight, 3);
-			ROS_WARN("------------- Plane %d is behind plane %d --------------", plane1.getID(), threatID);			
-			ROS_WARN("Turn Right? %d", turnRight);
-			ROS_WARN("Current Destination Latitude: %f | Longitude: %f", plane1.getDestination().latitude, plane1.getDestination().longitude);
-			ROS_WARN("WP Latitude: %f | Longitude: %f", wp.latitide, wp.longitude);
-			ROS_WARN("Previous Latitude: %f | Longitude: %f", plane1.getPreviousLoc().latitude, plane1.getPreviousLoc().longitude);
-			ROS_WARN("Current Latitude: %f | Longitude: %f", plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude);
-			return wp;
-		}
-	}
-/////////////////////////////////////////////////////////////////////
 
-	return calculateWaypoint(plane1, turningRadius, turnRight, 1);
+	return calculateWaypoint(plane1, turningRadius, turnRight, 2);
 }
 	
 /* Function that returns the ID of the most dangerous neighboring plane and its ZEM */
