@@ -194,10 +194,8 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 		continue;
 		}	
 
-		ROS_WARN("AntiZigzag: %d", planes[n].getAntiZigzag());
 		if (planes[n].getAntiZigzag() == 1) continue;
 		if (planes[n].getAntiZigzag() == 2) {
-			ROS_WARN("HEY DUDE IT WORKS");
 			planes[n].setAntiZigzag(1);
 		}
 		/* Fill in goToWaypointSrv request with new waypoint information*/

@@ -196,7 +196,7 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 
 		if (planes[n].getAntiZigzag() == 1) continue;
 		if (planes[n].getAntiZigzag() == 2) {
-			planes[n].setAntiZigzag(1);
+			planes[n].setAntiZigzag(0);
 		}
 		/* Fill in goToWaypointSrv request with new waypoint information*/
 		goToWaypointSrv.request.planeID = currentPlaneID;

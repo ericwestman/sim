@@ -17,7 +17,6 @@
 /home/eric/ros_workspace/sim/CMakeFiles/rospack_genmsg_libexe.dir
 /home/eric/ros_workspace/sim/CMakeFiles/rospack_gensrv.dir
 /home/eric/ros_workspace/sim/CMakeFiles/rospack_gensrv_all.dir
-/home/eric/ros_workspace/sim/CMakeFiles/rvizTranslator.dir
 /home/eric/ros_workspace/sim/CMakeFiles/simulator.dir
 /home/eric/ros_workspace/sim/CMakeFiles/test.dir
 /home/eric/ros_workspace/sim/CMakeFiles/test-future.dir
