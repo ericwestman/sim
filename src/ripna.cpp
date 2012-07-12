@@ -157,7 +157,7 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 		if ( plane1.findDistance(planes[ID]) > DANGER_ZEM &&  bearingDiff < 30.0) continue;
 
 		/* Second Threshold, to prevent planes from flying into others when trying to avoid less imminent collisions*/
-		if ( zeroEffortMiss <= 1.0*MPS_SPEED ) {
+		if ( zeroEffortMiss <= 1.5*MPS_SPEED ) {
 			iPlaneToAvoid = ID;
 			iMostDangerousZEM = zeroEffortMiss;
 			iMinimumTimeToGo = timeToGo;

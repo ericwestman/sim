@@ -127,7 +127,7 @@ int main(int argc, char **argv)
 	
 	//TODO:check for validity of 1 Hz
 	//currently updates at 1 Hz, based of Justin Paladino'sestimate of approximately 1 update/sec
-	int loopRate = 2;
+	int loopRate = 3;
 	int loopMultiple = 10;
 	int loopPosition = 0;
 	
