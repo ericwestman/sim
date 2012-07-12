@@ -17,7 +17,7 @@ This is the implementation of RIPNA.h.
 #include "sim/SimulatedPlane.h"		// for MAXIMUM_TURNING_ANGLE
 
 #define PLANE_MAX_TURN_ANGLE 22.5 //degrees / sec
-#define CHECK_ZONE 10.0*MPS_SPEED //meters
+#define CHECK_ZONE 8.0*MPS_SPEED //meters
 #define DANGER_ZEM 3.5*MPS_SPEED //meters
 #define MINIMUM_TURNING_RADIUS 28.64058013 //meters	
 #define DESIRED_SEPARATION 2.5*MPS_SPEED //meters
@@ -61,26 +61,7 @@ std::queue<sim::waypoint> sim::findNewWaypoint(PlaneObject &plane1, std::map<int
 	/* Given turning radius and orientation of the plane, calculate 
 	next collision avoidance waypoint*/
 	
-	//ROS_WARN("Plane %d's bearing is %f Plane%d's bearing is %f ZEM: %f", plane1.getID(), plane1.getCurrentBearing(), threatID, planes[threatID].getCurrentBearing(), threatZEM);
-
-
-/*	ATTEMPT #1
-	
-	//zigzagging
-	if (plane1.getLastGreatestThreat() == threatID && plane1.getLastZEM() > 0.5 * DANGER_ZEM && 
-		threatZEM > 0.5 * DANGER_ZEM && plane1.isBehind(planes[threatID])) {
-		ROS_WARN("ZIGZAG: Plane %d is behind Plane %d", plane1.getID(), threatID);
-	}
-
-	//zigzagging
-	plane1.setLastGreatestThreat(threatID);
-	plane1.setLastZEM(threatZEM);
-	plane1.setLastZEMTime();
-*/
-
-//ROS_WARN("----------------------------------------------------------------------------");
-	
-	for (int i = 1; i <= 3; i++) {
+	for (int i = 1; i <= 1; i++) {
 		waypointQueue.push(calculateWaypoint(plane1, turningRadius, turnRight, i));
 	}
 	return waypointQueue;
@@ -294,7 +275,6 @@ sim::waypoint sim::takeDubinsPath(PlaneObject &plane1) {
 	}
 	else {
 		//we can simply pass the current waypoint because it's accessible
-		//ROS_WARN("FINE: %f", findDistance(circleCenter.latitude, circleCenter.longitude, wp.latitude, wp.longitude));
 		return wp;
 	}
 }

@@ -199,7 +199,11 @@ void sim::PlaneObject::update(const sim::TelemetryUpdate &msg) {
 	/*if (this->id == 5 || this->id == 15) {
 		ROS_WARN("Num: %f Den: %f Ang: %f", numerator, denominator, angle);
 	}*/
-	this->setCurrentBearing(toCardinal(angle));
+	if (this->currentLoc.latitude != this->previousLoc.latitude && this->currentLoc.longitude != this->previousLoc.longitude)
+	{ 
+			this->setCurrentBearing(toCardinal(angle));
+	}
+	else this->setCurrentBearing(0.0);
 
 	this->setTargetBearing(msg.targetBearing);
 

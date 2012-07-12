@@ -189,11 +189,11 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 		std::queue<sim::waypoint> waypointQueue = findNewWaypoint(planes[currentPlaneID], planes);
 
 		while (!waypointQueue.empty()) {
+			ROS_WARN("Queue size = %d for plane %d", waypointQueue.size(), currentPlaneID);
 			newWaypoint = waypointQueue.front();
 			waypointQueue.pop();
 			if ((requestWaypointInfoSrv.response.longitude == newWaypoint.longitude) 
 				&& (requestWaypointInfoSrv.response.latitude == newWaypoint.latitude)) {
-			ROS_WARN("DOIWEIFOEJWK");
 			continue;
 			}	
 
