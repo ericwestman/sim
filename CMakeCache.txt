@@ -195,7 +195,7 @@ TOOLCHAINCONFIG:FILEPATH=TOOLCHAINCONFIG-NOTFOUND
 USERCONFIG:FILEPATH=USERCONFIG-NOTFOUND
 
 //Path to a file.
-_file_name:FILEPATH=//home/eric/ros_workspace/sim/src/sim/standardDefs.cpp
+_file_name:FILEPATH=/home/eric/ros_workspace/sim/src/rvizTranslator.cpp
 
 //Value Computed by CMake
 sim_BINARY_DIR:STATIC=/home/eric/ros_workspace/sim
