@@ -154,15 +154,15 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 
 		/* If they're likely to zigzag, don't avoid each other*/
 		bearingDiff = fabs(plane1.getCurrentBearing() - planes[ID].getCurrentBearing());
-		if ( plane1.findDistance(planes[ID]) > DANGER_ZEM &&  bearingDiff < 30.0) continue;
+		if ( plane1.findDistance(planes[ID]) > 3.5*MPS_SPEED &&  bearingDiff < 30.0) continue;
 
 		/* Second Threshold, to prevent planes from flying into others when trying to avoid less imminent collisions*/
-		if ( zeroEffortMiss <= 1.5*MPS_SPEED ) {
+		/*if ( zeroEffortMiss <= 2.0*MPS_SPEED && timeToGo <= 3.5 ) {
 			iPlaneToAvoid = ID;
 			iMostDangerousZEM = zeroEffortMiss;
 			iMinimumTimeToGo = timeToGo;
 			continue;
-		}
+		}*/
 
 		planeToAvoid = ID;
 		mostDangerousZEM = zeroEffortMiss;

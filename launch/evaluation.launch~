@@ -1,5 +1,6 @@
 <launch>
-
+	<node name="rviz" pkg="rviz" type="rviz" output="screen" />
+	<node name="rvizTranslator" pkg="sim" type="rvizTranslator" output="screen" />
 	<node name="collisionAvoidance" pkg="sim" type="collisionAvoidance"/>
 	<node name="coordinator" pkg="sim" type="coordinator"/>
 	<node name="KMLCreator" pkg="sim" type="KMLCreator" output="screen" />
