@@ -21,6 +21,8 @@ This node controls the collision avoidance algorithm--an implementation of react
 #include "sim/GoToWaypoint.h"
 #include "sim/RequestWaypointInfo.h"
 #include "sim/standardDefs.h"
+#include <tf/transform_broadcaster.h>
+#include <visualization_msgs/Marker.h>
 
 //our headers
 #include "sim/planeObject.h"
@@ -36,6 +38,9 @@ This node controls the collision avoidance algorithm--an implementation of react
 
 #define DEGREES_TO_RADIANS (M_PI/180.0)
 #define RADIANS_TO_DEGREES (180.0/M_PI)
+
+//publisher is global so callbacks can access it
+ros::Publisher marker_pub;
 
 
 /* ROS service clients for calling services from the coordinator */
@@ -68,6 +73,8 @@ int main(int argc, char **argv)
 	ros::Subscriber sub = n.subscribe("telemetry", 1000, telemetryCallback);
 	goToWaypointClient = n.serviceClient<sim::GoToWaypoint>("go_to_waypoint");
 	requestWaypointInfoClient = n.serviceClient<sim::RequestWaypointInfo>("request_waypoint_info");
+	
+	//publish basic shapes to plane positions
 
 	//initialize counting
 	count = 0;	
@@ -178,6 +185,8 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 
 	sim::waypoint newWaypoint;
 	
+	ROS_ERROR("Number of planes: %d PlaneID: %d", numPlanes, planeID);
+	
 	for (int n = 0; n < numPlanes; n++) {
 		/* This line of code calls the collision avoidance algorithm 
 		and determines if there should be collision avoidance 
@@ -185,34 +194,34 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg)
 		*/	
 
 		currentPlaneID = n;
-		sim::waypoint newWaypoint;
-		std::queue<sim::waypoint> waypointQueue = findNewWaypoint(planes[currentPlaneID], planes);
+		
+		newWaypoint = findNewWaypoint(planes[currentPlaneID], planes);
+	
+		if ((requestWaypointInfoSrv.response.longitude == newWaypoint.longitude) 
+			&& (requestWaypointInfoSrv.response.latitude == newWaypoint.latitude)) {
+		return;
+		}	
 
-		while (!waypointQueue.empty()) {
-			ROS_WARN("Queue size = %d for plane %d", waypointQueue.size(), currentPlaneID);
-			newWaypoint = waypointQueue.front();
-			waypointQueue.pop();
-			if ((requestWaypointInfoSrv.response.longitude == newWaypoint.longitude) 
-				&& (requestWaypointInfoSrv.response.latitude == newWaypoint.latitude)) {
-			continue;
-			}	
+		/* Fill in goToWaypointSrv request with new waypoint information*/
+		goToWaypointSrv.request.planeID = currentPlaneID;
+		goToWaypointSrv.request.latitude = newWaypoint.latitude;
+		goToWaypointSrv.request.longitude = newWaypoint.longitude;
+		goToWaypointSrv.request.altitude = newWaypoint.altitude;
+		goToWaypointSrv.request.isAvoidanceManeuver = true; 
+		goToWaypointSrv.request.isNewQueue = true;
 
-			/* Fill in goToWaypointSrv request with new waypoint information*/
-			goToWaypointSrv.request.planeID = currentPlaneID;
-			goToWaypointSrv.request.latitude = newWaypoint.latitude;
-			goToWaypointSrv.request.longitude = newWaypoint.longitude;
-			goToWaypointSrv.request.altitude = newWaypoint.altitude;
-			goToWaypointSrv.request.isAvoidanceManeuver = true; 
-			goToWaypointSrv.request.isNewQueue = true;
-
-			if (goToWaypointClient.call(goToWaypointSrv)) {
-				count++;
-				ROS_INFO("Received response from service request %d", (count-1));
-			}
-			else {
-				ROS_ERROR("Did not receive response");
-			}
+		if (goToWaypointClient.call(goToWaypointSrv)) {
+			count++;
+			ROS_INFO("Received response from service request %d", (count-1));
 		}
+		else {
+			ROS_ERROR("Did not receive response");
+		}
+
+		requestWaypointInfoSrv.request.planeID = currentPlaneID;
+		requestWaypointInfoSrv.request.isAvoidanceWaypoint = true;
+		requestWaypointInfoSrv.request.positionInQueue = 0;
+
 
 	}
 	

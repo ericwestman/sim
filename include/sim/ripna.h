@@ -9,7 +9,6 @@ This is the header file for RIPNA.cpp, which implements the functions declared h
 #define COLLISION_AVOIDANCE_ALGORITHM_H
 
 #include <map>
-#include <queue>
 
 #include "sim/planeObject.h"
 #include "sim/vmath.h"
@@ -20,7 +19,7 @@ namespace sim{
 	functions outlined in this file to calculate a collision avoidance waypoint 
 	for the plane to travel to. If no collision avoidance or maneuvering is 
 	necessary, this functions returns the current destination waypoint */
-	std::queue<sim::waypoint> findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObject> &planes);
+	sim::waypoint findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObject> &planes);
 	
 	/*This function receives the current plane and a map of all of the planes 
 	in the airspace, and returns the ID of the plane which is the most imminent 
@@ -37,11 +36,15 @@ namespace sim{
 	/* This function takes the current plane, its calculated turning radius, 
 	and which direction it should turn in order to find the new collision 
 	avoidance waypoint for the plane to go to.*/
-	sim::waypoint calculateWaypoint(PlaneObject &plane1, double turningRadius, bool turnRight, int iter);
+	sim::waypoint calculateWaypoint(PlaneObject &plane1, double turningRadius, bool turnRight);
 
 	/*This function calculates the next waypoint for the plane based on its 
 	distance from its current waypoint and its bearing. */
 	sim::waypoint takeDubinsPath(PlaneObject &plane);
+	
+	/* This function takes a plane, its turning radius, and the direction to turn 
+	and returns the center of the circle of its turning radius. */
+	sim::coordinate calculateCircleCenter(PlaneObject &plane, double turnRadius, bool turnRight);
 
 	sim::coordinate calculateLoopingCircleCenter(PlaneObject &plane, double turnRadius, bool turnRight);
 };
