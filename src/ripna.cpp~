@@ -82,14 +82,13 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 	/* Set preliminary plane to avoid as non-existent and most dangerous 
 	ZEM as negative*/
 	int planeToAvoid = -1;
+	int iPlaneToAvoid = -1;
 	double mostDangerousZEM = -1.0;
-
-	/*dangerFactor calculates relative danger based on ZEM and time to go; higher values are more dangerous*/
-	//double dangerFactor = -1;
-	//double lastDangerFactor;
-
-	/* Set the preliminary time-to-go to infinity*/
+	double iMostDangerousZEM = -1.0;
+	/* Set the preliminary time-to-go to way high*/
 	double minimumTimeToGo = MINIMUM_TIME_TO_GO;
+	double iMinimumTimeToGo = 3.5;
+
 	/* Declare second plane and ID variable */
 	PlaneObject plane2;
 	int ID;
@@ -107,7 +106,7 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 	/* Declare variables needed for this loop*/
 	sim::mathVector pDiff;
 	sim::mathVector dDiff;
-	double timeToGo, zeroEffortMiss, distanceBetween, timeToDest;
+	double timeToGo, zeroEffortMiss, distanceBetween, timeToDest, bearingDiff;
 	std::map<int,sim::PlaneObject>::iterator it;
 	for ( it=planes.begin() ; it!= planes.end(); it++ ){
 		/* Unpacking plane to check*/		
@@ -139,25 +138,25 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 			2.0*(MPS_SPEED*timeToGo)*pDiff.dotProduct(dDiff) + 
 			pow(MPS_SPEED*timeToGo,2.0)*dDiff.dotProduct(dDiff));
 		
-		if( zeroEffortMiss > DANGER_ZEM || (timeToGo > minimumTimeToGo /*&& timeToGo > iMinimumTimeToGo*/) || timeToGo < 0 ) continue;
+		if( zeroEffortMiss > DANGER_ZEM || (timeToGo > minimumTimeToGo && timeToGo > iMinimumTimeToGo) || timeToGo < 0 ) continue;
 
 		// If the plane is behind you, don't avoid it
 		//if ( fabs(plane2.findAngle(plane1)*180.0/PI - toCartesian(plane1.getCurrentBearing())) < 35.0) continue;
 
 
-		//timeToDest = plane1.findDistance(plane1.getDestination().latitude, 
-			//plane1.getDestination().longitude) / MPS_SPEED;
+		timeToDest = plane1.findDistance(plane1.getDestination().latitude, 
+			plane1.getDestination().longitude) / MPS_SPEED;
 
 		/* If you're close to your destination and the other plane isn't
 		much of a threat, then don't avoid it */ 
-		//if ( timeToDest < 5.0 && zeroEffortMiss > 3.0*MPS_SPEED ) continue;
+		if ( timeToDest < 5.0 && zeroEffortMiss > 3.0*MPS_SPEED ) continue;
 
 		/* If they're likely to zigzag, don't avoid each other*/
 		//bearingDiff = fabs(plane1.getCurrentBearing() - planes[ID].getCurrentBearing());
 		//if ( plane1.findDistance(planes[ID]) > 3.5*MPS_SPEED &&  bearingDiff < 30.0) continue;
 
 		/* Second Threshold, to prevent planes from flying into others when trying to avoid less imminent collisions*/
-		/*if ( zeroEffortMiss <= 2.0*MPS_SPEED && timeToGo <= 3.5 ) {
+		/*if ( zeroEffortMiss <= 1.5*MPS_SPEED && timeToGo <= iMinimumTimeToGo ) {
 			iPlaneToAvoid = ID;
 			iMostDangerousZEM = zeroEffortMiss;
 			iMinimumTimeToGo = timeToGo;
@@ -170,9 +169,16 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 	}
 
 	sim::threatContainer greatestThreat;
-	greatestThreat.planeID = planeToAvoid;
-	greatestThreat.ZEM = mostDangerousZEM;
-	greatestThreat.timeToGo = minimumTimeToGo;
+	if (iPlaneToAvoid > -1) {
+		greatestThreat.planeID = iPlaneToAvoid;
+		greatestThreat.ZEM = iMostDangerousZEM;
+		greatestThreat.timeToGo = iMinimumTimeToGo;		
+	}
+	else {
+		greatestThreat.planeID = planeToAvoid;
+		greatestThreat.ZEM = mostDangerousZEM;
+		greatestThreat.timeToGo = minimumTimeToGo;
+	}
 
 	return greatestThreat;
 }
