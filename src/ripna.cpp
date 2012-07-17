@@ -55,7 +55,12 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 
 	/* Given turning radius and orientation of the plane, calculate 
 	next collision avoidance waypoint*/
-	return calculateWaypoint(plane1, turningRadius, turnRight);
+	sim::waypoint wp = calculateWaypoint(plane1, turningRadius, turnRight);
+	if (wp.latitude != wp.latitude || wp.longitude != wp.longitude) {
+		ROS_WARN("%d\t%f\t%f\t%d\t%f\t%f\t%f", threatID, threatZEM, timeToGo, turnRight, turningRadius, wp.latitude, wp.longitude);
+	}
+	return wp;
+
 }
 
 	
@@ -121,11 +126,12 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 		pDiff = p1-p2;
 		dDiff = d1-d2;
 		timeToGo = -1.0*pDiff.dotProduct(dDiff)/(MPS_SPEED*dDiff.dotProduct(dDiff));
+		
 
 		/* Compute Zero Effort Miss */
-		zeroEffortMiss = sqrt(pDiff.dotProduct(pDiff) + 
+		zeroEffortMiss = sqrt(fabs(pDiff.dotProduct(pDiff) + 
 			2.0*(MPS_SPEED*timeToGo)*pDiff.dotProduct(dDiff) + 
-			pow(MPS_SPEED*timeToGo,2.0)*dDiff.dotProduct(dDiff));
+			pow(MPS_SPEED*timeToGo,2.0)*dDiff.dotProduct(dDiff)));
 		
 		if( zeroEffortMiss > DANGER_ZEM || (timeToGo > minimumTimeToGo && timeToGo > iMinimumTimeToGo) || timeToGo < 0 ) continue;
         
