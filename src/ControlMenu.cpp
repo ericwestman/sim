@@ -1,7 +1,5 @@
-/*
-Controls Menu
-This will be the primary UI for now just to control the simulator and coordinator.
-*/
+/* Controls Menu
+This will be the primary UI for now just to control the simulator and coordinator. */
 
 //standard headers
 #include <stdio.h>
@@ -32,32 +30,24 @@ ros::ServiceClient loadCourseClient;
 //services to the KMLCreator
 ros::ServiceClient saveFlightDataClient;
 
-/*
-createCourseUAVs(...)
-takes a filename and will parse it to determine how many UAVs there are and create them as needed
-*/
-bool createCourseUAVs(std::string filename)
-{
+/* Takes a filename, parses it to determine how many UAVs there are, and creates them as needed. */
+bool createCourseUAVs(std::string filename) {
 	//open our file
 	FILE *fp;
 	fp = fopen((ros::package::getPath("sim")+"/courses/"+filename).c_str(), "r");
 	
 	//check for a good file open
-	if(fp != NULL)
-	{
+	if(fp != NULL) {
 		char buffer[256];
 		
 		std::map<int, bool> isFirstPoint;
 		
-		while(fgets(buffer, sizeof(buffer), fp))
-		{
-			if(buffer[0] == '#' || isBlankLine(buffer))
-			{
+		while(fgets(buffer, sizeof(buffer), fp)) {
+			if(buffer[0] == '#' || isBlankLine(buffer)) {
 				//this line is a comment
 				continue;
 			}
-			else
-			{
+			else {
 				//set some invalid defaults
 				int planeID = -1;
 				struct sim::waypoint temp;
@@ -67,8 +57,7 @@ bool createCourseUAVs(std::string filename)
 				sscanf(buffer, "%d %lf %lf %lf\n", &planeID, &temp.latitude, &temp.longitude, &temp.altitude);
 				
 				//check for the invalid defaults
-				if(planeID == -1 || temp.latitude == -1000 || temp.longitude == -1000 || temp.altitude == -1000)
-				{
+				if(planeID == -1 || temp.latitude == -1000 || temp.longitude == -1000 || temp.altitude == -1000) {
 					//this means we have a bad file somehow
 					ROS_ERROR("Bad file parse");
 					return false;
@@ -76,8 +65,7 @@ bool createCourseUAVs(std::string filename)
 				
 				//check our map for an entry, if we dont have one then this is the first time
 				//that this plane ID has been referenced so it's true
-				if(isFirstPoint.find(planeID) == isFirstPoint.end())
-				{
+				if(isFirstPoint.find(planeID) == isFirstPoint.end()) {
 					isFirstPoint[planeID] = true;
 					
 					//this is the first time we've seen this ID in the file, attempt to create it
@@ -91,13 +79,9 @@ bool createCourseUAVs(std::string filename)
 					//send the service request
 					printf("\nRequesting to create new plane with ID #%d...\n", planeID);
 					if(createSimulatedPlaneClient.call(srv))
-					{
 						printf("New plane with ID #%d has been created!\n", srv.response.planeID);
-					}
 					else
-					{
 						ROS_ERROR("Did not receive a response from simulator");
-					}
 				}
 				
 				//only clear the queue with the first point
@@ -105,17 +89,13 @@ bool createCourseUAVs(std::string filename)
 			}
 		}
 	}
-	else
-	{
+	else {
 		ROS_ERROR("Invalid filename or location: %s", filename.c_str());
 		return false;
 	}
 }
 
-/*
-simulatorMenu()
-This is menu for simulator related options.  Specifically, it will be use for UAV creation and deletion.
-*/
+/* This is a menu for simulator related options. Specifically, it will be used for UAV creation and deletion. */
 void simulatorMenu()
 {
 	//simple menu setup
@@ -133,11 +113,9 @@ void simulatorMenu()
 		scanf("%d", &choice);
 		system("clear");
 		
-		switch(choice)
-		{
+		switch(choice) {
 			//Add a simulated plane
-			case 1:
-			{
+			case 1: {
 				//values we need to get started
 				double latitude, longitude, altitude;
 				double bearing;
@@ -159,20 +137,15 @@ void simulatorMenu()
 				//send the service request
 				printf("\nRequesting to create new plane...\n");
 				if(createSimulatedPlaneClient.call(srv))
-				{
 					printf("New plane with ID #%d has been created!\n", srv.response.planeID);
-				}
 				else
-				{
 					ROS_ERROR("Did not receive a response from simulator");
-				}
 				
 				break;
 			}
 			
 			//Delete a simulated plane
-			case 2:
-			{
+			case 2: {
 				//only value we need
 				int planeID;
 				
@@ -187,44 +160,35 @@ void simulatorMenu()
 				//send the request
 				printf("\nRequesting to delete plane...\n");
 				if(deleteSimulatedPlaneClient.call(srv))
-				{
 					printf("Plane with ID #%d has been deleted!\n", planeID);
-				}
 				else
-				{
 					ROS_ERROR("Did not receive a response from simulator");
-				}
 				
 				break;
 			}
 			
-			case 3:
-			{
+			case 3: {
 				//nothing to do but leave
 				break;
 			}
 			
-			default:
-			{
+			default: {
 				printf("Invalid choice.\n");
 				break;
 			}
 		}
 	}
 }
-/*
-pathMenu()
-This menu is used for when the user wishes to perform some actions on the path planning aspect of the
-coordinator.  This includes simply sending a UAV to a waypoint and loading paths or courses for the UAV.
-*/
+
+/* This menu is used for when the user wishes to perform some actions on the path planning aspect of the
+coordinator.  This includes simply sending a UAV to a waypoint and loading paths or courses for the UAV. */
 void pathMenu()
 {
 	//simple menu setup
 	int choice = 0;
 	
 	//loop until the user asks to go back
-	while(choice != 4)
-	{
+	while(choice != 4) {
 		printf("\nPath Planning Menu:\n");
 		printf("1-Go to waypoint\n");
 		printf("2-Load path\n");
@@ -234,11 +198,9 @@ void pathMenu()
 		scanf("%d", &choice);
 		system("clear");
 		
-		switch(choice)
-		{
+		switch(choice) {
 			//go to a specified waypoint, this will clear the entire queue for the UAV
-			case 1:
-			{
+			case 1: {
 				//create service
 				sim::GoToWaypoint srv;
 				
@@ -256,20 +218,15 @@ void pathMenu()
 				//call the service
 				printf("Sending go to waypoint...\n");
 				if(goToWaypointClient.call(srv))
-				{
 					printf("Waypoint sent successfully!\n");
-				}
 				else
-				{
 					ROS_ERROR("Did not receive response from coordinator");
-				}
 				
 				break;
 			}
 			
 			//load a path for a plane
-			case 2:
-			{
+			case 2: {
 				//create service
 				sim::LoadPath srv;
 				
@@ -286,19 +243,14 @@ void pathMenu()
 				srv.request.filename = filename;
 				
 				if(loadPathClient.call(srv))
-				{
 					printf("Path loaded successfully!\n");
-				}
 				else
-				{
 					ROS_ERROR("Error loading path");
-				}
 				break;
 			}
 			
 			//load a course for our UAVs
-			case 3:
-			{
+			case 3: {
 				//create the service
 				sim::LoadCourse srv;
 				
@@ -309,40 +261,31 @@ void pathMenu()
 				scanf("%s", filename);
 				
 				//get whether we should create planes or not
-				while(!isValidYesNo(createNewPlanes[0]))
-				{
+				while(!isValidYesNo(createNewPlanes[0])) {
 					printf("\nDo you want to automatically create any non-existent planes (y/n)?");
 					scanf("%s", createNewPlanes);
 				}
 				
 				//check if we need to create some simulated UAVs
 				if(tolower(createNewPlanes[0]) == 'y')
-				{
 					createCourseUAVs(filename);
-				}
 				
 				srv.request.filename = filename;
 				
 				if(loadCourseClient.call(srv))
-				{
 					printf("Course loaded successfully!\n");
-				}
 				else
-				{
 					ROS_ERROR("Error loading course");
-				}
 				break;
 			}
 			
 			//we don't have to do anything for the go back case
-			case 4:
-			{
+			case 4: {
 				break;
 			}
 			
 			//someone failed to read or type
-			default:
-			{
+			default: {
 				printf("Invalid choice.\n");
 				break;
 			}
@@ -350,10 +293,7 @@ void pathMenu()
 	}
 }
 
-/*
-main(...)
-This just sets up all the ROS stuff and serves as the primary top level menu
-*/
+/* This just sets up all the ROS stuff and serves as the primary top level menu. */
 int main(int argc, char **argv)
 {
 	//Standard ROS startup
@@ -372,8 +312,7 @@ int main(int argc, char **argv)
 	int choice = 0;
 	
 	//loop until the user asks to quit
-	while(choice != 4)
-	{
+	while(choice != 4) {
 		printf("\nStandard Controller Menu:\n");
 		printf("1-Simulator Controls\n");
 		printf("2-Path Planning\n");
@@ -383,20 +322,16 @@ int main(int argc, char **argv)
 		scanf("%d", &choice);
 		system("clear");
 		
-		switch(choice)
-		{
-			case 1:
-			{
+		switch(choice) {
+			case 1: {
 				simulatorMenu();
 				break;
 			}
-			case 2:
-			{
+			case 2: {
 				pathMenu();
 				break;
 			}
-			case 3:
-			{
+			case 3: {
 				char filename[256];
 				printf("\nEnter the filename to save to:");
 				scanf("%s", filename);
@@ -405,23 +340,17 @@ int main(int argc, char **argv)
 				srv.request.filename = filename;
 				
 				if(saveFlightDataClient.call(srv))
-				{
 					printf("Flight data saved successfully!\n");
-				}
 				else
-				{
 					ROS_ERROR("Error saving flight data");
-				}
 				
 				break;
 			}
-			case 4:
-			{
+			case 4: {
 				//nothing to do but leave
 				break;
 			}
-			default:
-			{
+			default: {
 				printf("Invalid choice.\n");
 				break;
 			}

@@ -1,7 +1,6 @@
-/*
-standardDefs.h
-This file is meant to contain things that are used across multiple executables that don't change
-*/
+/* standardDefs.h
+This file is meant to contain things that are used across multiple
+executables that don't change. */
 
 #ifndef STANDARD_DEFS_H
 #define STANDARD_DEFS_H
@@ -31,34 +30,22 @@ Many defines for simulator calculations
 #define METERS_TO_LATITUDE (1.0/111200.0)
 
 
-namespace sim
-{
-	//Here's our standard waypoint definition
-	struct waypoint
-	{
+namespace sim {
+	struct waypoint {
 		double latitude;
 		double longitude;
 		double altitude;
 	};
 }
 
-/*
-isBlankLine(...)
-simple function for parsing to determine is a string is a "blank" line
-*/
+/* Determines if a string is a "blank" line. */
 bool isBlankLine(char str[]);
 
-/*
-isValidYesNo(...)
-returns true if the character is a 'y', 'Y', 'n', or 'N'
-*/
+/* Returns true if the character is a 'y', 'Y', 'n', or 'N'. */
 bool isValidYesNo(char c);
 
-/*
-distanceBetween(...)
-Returns the distance in meters between the two waypoints provided.  Note that it does take into account
-the earth's curvature.
-*/
+/* Returns the distance in meters between the two waypoints provided.
+Note that it does take into account the Earth's curvature. */
 double distanceBetween(struct sim::waypoint first, struct sim::waypoint second);
 
 #endif
