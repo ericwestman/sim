@@ -1,3 +1,2 @@
 	<node name="rviz" pkg="rviz" type="rviz" output="screen" />
 	<node name="rvizTranslator" pkg="sim" type="rvizTranslator" output="screen" />
-
