@@ -16,10 +16,12 @@ This is the implementation of RIPNA.h.
 #include "sim/standardFuncs.h"		// for PI, EARTH_RADIUS, MPS_SPEED
 #include "sim/SimulatedPlane.h"		// for MAXIMUM_TURNING_ANGLE
 
+#define CHATTERING_ANGLE 30.0
+#define SECOND_THRESHOLD 1.50*MPS_SPEED
 #define PLANE_MAX_TURN_ANGLE 22.5 //degrees / sec
 #define CHECK_ZONE 10.0*MPS_SPEED //meters
 #define DANGER_ZEM 3.5*MPS_SPEED //meters
-#define MINIMUM_TURNING_RADIUS 28.64058013 //meters	
+#define MINIMUM_TURNING_RADIUS 28.64058013 //meters
 #define DESIRED_SEPARATION 2.5*MPS_SPEED //meters
 #define LAMBDA 0.1 //dimensionless
 #define TIME_STEP 1.0 //seconds
@@ -144,19 +146,19 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 		//if ( fabs(plane2.findAngle(plane1)*180.0/PI - toCartesian(plane1.getCurrentBearing())) < 35.0) continue;
 
 
-		timeToDest = plane1.findDistance(plane1.getDestination().latitude, 
-			plane1.getDestination().longitude) / MPS_SPEED;
+		//timeToDest = plane1.findDistance(plane1.getDestination().latitude, 
+			//plane1.getDestination().longitude) / MPS_SPEED;
 
 		/* If you're close to your destination and the other plane isn't
 		much of a threat, then don't avoid it */ 
-		if ( timeToDest < 5.0 && zeroEffortMiss > 3.0*MPS_SPEED ) continue;
+		//if ( timeToDest < 5.0 && zeroEffortMiss > 3.0*MPS_SPEED ) continue;
 
 		/* If they're likely to zigzag, don't avoid each other*/
 		//bearingDiff = fabs(plane1.getCurrentBearing() - planes[ID].getCurrentBearing());
-		//if ( plane1.findDistance(planes[ID]) > 3.5*MPS_SPEED &&  bearingDiff < 30.0) continue;
+		//if ( plane1.findDistance(planes[ID]) > 3.5*MPS_SPEED &&  bearingDiff < CHATTERING_ANGLE) continue;
 
 		/* Second Threshold, to prevent planes from flying into others when trying to avoid less imminent collisions*/
-		/*if ( zeroEffortMiss <= 1.5*MPS_SPEED && timeToGo <= iMinimumTimeToGo ) {
+		/*if ( zeroEffortMiss <= SECOND_THRESHOLD && timeToGo <= iMinimumTimeToGo ) {
 			iPlaneToAvoid = ID;
 			iMostDangerousZEM = zeroEffortMiss;
 			iMinimumTimeToGo = timeToGo;
@@ -235,11 +237,6 @@ sim::waypoint sim::calculateWaypoint(PlaneObject &plane1, double turningRadius, 
 	wp.altitude = plane1.getCurrentLoc().altitude;
 	if (plane1.getID() == 5  || plane1.getID() == 15) 
 	ROS_WARN("Angle to WP: %f",  findAngle(plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude, wp.latitude, wp.longitude) - toCartesian(plane1.getCurrentBearing()));
-	//ROS_WARN("Plane %d Destination:  Latitude: %f, Longitude: %f", plane1.getID(), wp.latitude, wp.longitude);
-
-	
-
-	//ROS_WARN("Plane%d calc lat: %f lon: %f w/ act lat: %f lon: %f", plane1.getID(), wp.latitude, wp.longitude, plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude);
 	
 	return wp;
 }

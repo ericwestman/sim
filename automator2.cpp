@@ -20,6 +20,7 @@ Compiled with G++.
 #define SLEEP_TIME (SIMULATION_TIME+16)
 #define OUTPUT_ADDITION "_test\n" //the '\n' is CRITICAL
 #define LENGTH_OF_EXTENSION 7 //".course" has 7 characters
+#define NUM_COURSES 9
 
 /*
 isBlankLine(...)
@@ -59,9 +60,6 @@ int main()
 	printf("Enter the file with all the courses in it:");
 	scanf("%s", filename);
 	
-	//open the file
-	FILE *fp;
-	fp = fopen(filename, "r");
 	
 	//try to create our pipe for use later
 	int pfds[2];
@@ -71,66 +69,124 @@ int main()
 		exit(1);
 	}
 	
-	//check for a good open
-	if(fp != NULL)
-	{
-		char buffer[256];
-		//while we have something in the file
-		while(fgets(buffer, sizeof(buffer), fp))
-		{	
-			//check for useless lines
-			if(buffer[0] == '#' || isBlankLine(buffer))
-			{
-				//this line is a comment
-				continue;
-			}
-			
-			//construct our strings to send
-			std::string myStr = std::string(buffer);
-			myStr = myStr.substr(0, myStr.size() - LENGTH_OF_EXTENSION - 1);
-			myStr = myStr + OUTPUT_ADDITION;
-			
-			//fork our process
-			int pid;
-			pid = fork();
-	
-			if(pid == 0)
-			{
-				//we're redirecting STDIN such that it comes from the pipe
-				//close standard in
-				close(STDIN_FILENO);
+	char buffer[256];
+	char buffer_2[256];
+	char str_value[50];
+
+
+	FILE *results, *ripna, *fp, *scorefile;
+	results = fopen( "/home/eric/ros_workspace/sim/scores/Results.txt", "w");
+	fprintf(results, "Conflicts\tCollisions\tEfficiency\n");
+
+	for ( double value = 0.5; value <= 2.5; value += 0.2 ) {
+		//open the file
 		
-				//duplicate our stdin as the pipe output
-				dup2(pfds[0], STDIN_FILENO);
-				
-				//child process
-				system("roslaunch sim evaluation.launch");
-			}
-			else
-			{
-				//send out output over that there pipe
-				printf("Writing to the pipe! %s\n", buffer);
-				write(pfds[1], buffer, strlen(buffer));
-				printf("Writing to the pipe! %s\n", myStr.c_str());
-				write(pfds[1], myStr.c_str(), strlen(myStr.c_str()));
+		fp = fopen(filename, "r");
 		
-				//parent waits some time, then kills before starting new one
-				sleep(SLEEP_TIME);
-				printf("Killing Process ID #%d\n", pid);
-				kill(pid, SIGTERM);
-				waitpid(pid, NULL, 0);
+		//check for a good open
+		if(fp != NULL)
+		{
+			sprintf(str_value, "%f\n", value);
+			fprintf(results, str_value);
+			
+			ripna = fopen("/home/eric/ros_workspace/sim/src/ripna.cpp", "r+");
+			fseek (ripna, 366, SEEK_SET );
+			fputs (str_value, ripna);
+			fclose (ripna);	
+
+			system("rosmake sim");
+
+			//while we have something in the file
+			while(fgets(buffer, sizeof(buffer), fp))
+			{	
+				//check for useless lines
+				if(buffer[0] == '#' || isBlankLine(buffer))
+				{
+					//this line is a comment
+					continue;
+				}
+			
+				//construct our strings to send
+				std::string myStr = std::string(buffer);
+				myStr = myStr.substr(0, myStr.size() - LENGTH_OF_EXTENSION - 1);
+				myStr = myStr + OUTPUT_ADDITION;
+			
+				//fork our process
+				int pid;
+				pid = fork();
+
+				if(pid == 0)
+				{
+					//we're redirecting STDIN such that it comes from the pipe
+					//close standard in
+					close(STDIN_FILENO);
+		
+					//duplicate our stdin as the pipe output
+					dup2(pfds[0], STDIN_FILENO);
 				
-				//give the SIGTERM time to work
-				sleep(BUFFER_TIME);
-			}
+					//child process
+					system("roslaunch sim evaluation.launch");
+				}
+				else
+				{
+					//send out output over that there pipe
+					printf("Writing to the pipe! %s\n", buffer);
+					write(pfds[1], buffer, strlen(buffer));
+					printf("Writing to the pipe! %s\n", myStr.c_str());
+					write(pfds[1], myStr.c_str(), strlen(myStr.c_str()));
+		
+					//parent waits some time, then kills before starting new one
+					sleep(SLEEP_TIME);
+					printf("Killing Process ID #%d\n", pid);
+					kill(pid, SIGTERM);
+					waitpid(pid, NULL, 0);
+				
+					//give the SIGTERM time to work
+					sleep(BUFFER_TIME);
+				}
+			}	
 		}
-		
+	
+		else {
+			printf("ERROR: Bad file name\n");
+		}
+
 		fclose(fp);
+
+		// Writing data to a file
+		char buffer_3[256];
+		char name[256];
+		int j;
+		for (int i = 1; i <= NUM_COURSES; i++) {
+			sprintf(name, "/home/eric/ros_workspace/sim/scores/final_32_500m_%d_test.score", i);
+			scorefile = fopen(name, "r");
+			
+			while(fgets(buffer_3, sizeof(buffer_3), scorefile)) {
+				
+				for (j = 0; j < sizeof(buffer_3); j++) {				
+					if (buffer_3[j] == '\n') {
+						break;
+					}
+				}
+				char output[j-1];
+				for (int k = 0; k < j; k++) {
+					output[k] = buffer_3[k];
+				}
+				output[j] = '\0';
+				
+				fprintf(results, "%s\t", output);			
+			}
+			
+			fprintf(results, "\n");
+			fclose(scorefile);
+		}
+		fprintf(results, "\n\n");
+
 	}
-	else
-	{
-		printf("ERROR: Bad file name\n");
-	}
+
+
+	fclose(results);
+	
 	
 	return 0;
 }

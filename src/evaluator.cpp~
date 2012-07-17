@@ -22,7 +22,7 @@ functions on that data.
 #include "sim/SaveFlightData.h"
 
 //USER DEFINED EVALUATION SETTINGS
-#define TIME_LIMIT 200 //10 minutes
+#define TIME_LIMIT 150 //10 minutes
 #define WAYPOINT_SCORE 5 //5 points for each waypoint reached
 #define CONFLICT_SCORE -1 //-1 point for each conflict during flight
 
@@ -127,7 +127,7 @@ void endEvaluation()
 	else
 	{
 		//dump our data into
-		fprintf(fp, "Plane ID\tDistance Traveled(m)\tMinimum Travel(m)\t\tWaypoints Achieved\tTime of Death(s)\n");
+		/*fprintf(fp, "Plane ID\tDistance Traveled(m)\tMinimum Travel(m)\t\tWaypoints Achieved\tTime of Death(s)\n");
 		fprintf(fp, "--------\t--------------------\t-----------------\t\t------------------\t----------------\n");
 		for(int id = 0; id <= lastPlaneID; id++)
 		{
@@ -160,12 +160,12 @@ void endEvaluation()
 		fprintf(fp, "\n");
 		fprintf(fp, "Totals:\n");
 		fprintf(fp, "Elapsed time:%lf\n", (ros::Time::now() - startTime).toSec());
-		fprintf(fp, "Waypoints reached: %d\n", waypointsTotal);
-		fprintf(fp, "Number of conflicts: %d\n", numConflicts);
-		fprintf(fp, "Number of collisions: %d\n", numCollisions);
-		fprintf(fp, "Dead plane count: %d of %d\n", deadPlaneCount, (lastPlaneID+1));
-		if(totalMinDist != 0) fprintf(fp, "Distance actual/distance minimum: %lf\n", totalDistTraveled/totalMinDist);
-		fprintf(fp, "Final Score: %d\n", score);
+		fprintf(fp, "Waypoints reached: %d\n", waypointsTotal);*/
+		fprintf(fp, "%d\n", numConflicts);
+		fprintf(fp, "%d\n", numCollisions);
+		//fprintf(fp, "Dead plane count: %d of %d\n", deadPlaneCount, (lastPlaneID+1));
+		if(totalMinDist != 0) fprintf(fp, "%lf\n", totalMinDist/totalDistTraveled);
+		//fprintf(fp, "Final Score: %d\n", score);
 	
 		//close the file
 		fclose(fp);
