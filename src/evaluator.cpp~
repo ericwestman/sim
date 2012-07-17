@@ -127,7 +127,7 @@ void endEvaluation()
 	else
 	{
 		//dump our data into
-		/*fprintf(fp, "Plane ID\tDistance Traveled(m)\tMinimum Travel(m)\t\tWaypoints Achieved\tTime of Death(s)\n");
+		fprintf(fp, "Plane ID\tDistance Traveled(m)\tMinimum Travel(m)\t\tWaypoints Achieved\tTime of Death(s)\n");
 		fprintf(fp, "--------\t--------------------\t-----------------\t\t------------------\t----------------\n");
 		for(int id = 0; id <= lastPlaneID; id++)
 		{
@@ -160,10 +160,10 @@ void endEvaluation()
 		fprintf(fp, "\n");
 		fprintf(fp, "Totals:\n");
 		fprintf(fp, "Elapsed time:%lf\n", (ros::Time::now() - startTime).toSec());
-		fprintf(fp, "Waypoints reached: %d\n", waypointsTotal);*/
-		fprintf(fp, "%d\n", numConflicts);
-		fprintf(fp, "%d\n", numCollisions);
-		//fprintf(fp, "Dead plane count: %d of %d\n", deadPlaneCount, (lastPlaneID+1));
+		fprintf(fp, "Waypoints reached: %d\n", waypointsTotal);
+		fprintf(fp, "Number of Conflicts: %d\n", numConflicts);
+		fprintf(fp, "Number of Collisions: %d\n", numCollisions);
+		fprintf(fp, "Dead plane count: %d of %d\n", deadPlaneCount, (lastPlaneID+1));
 		if(totalMinDist != 0) fprintf(fp, "%lf\n", totalMinDist/totalDistTraveled);
 		//fprintf(fp, "Final Score: %d\n", score);
 	

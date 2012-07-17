@@ -62,11 +62,6 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 
 	if ((plane1.getID() == 5 && threatID == 15 ) || (plane1.getID() == 15 && threatID == 5)) {
 	//ROS_WARN("Plane %d's greatest threat is plane %d with ZEM = %f", plane1.getID(), threatID, threatZEM);
-	
-	ROS_WARN("------------------------------------------------------------------------");
-	ROS_WARN("Plane %d's bearing is %f Plane%d's bearing is %f ZEM: %f", plane1.getID(), plane1.getCurrentBearing(), threatID, planes[threatID].getCurrentBearing(), threatZEM);
-	ROS_WARN("Plane %d Latitude: %f, Longitude: %f", plane1.getID(), plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude);
-	ROS_WARN("Planes %d and %d should turnright:%d", plane1.getID(), threatID, turnRight);
 
 	}
 
@@ -285,25 +280,6 @@ sim::waypoint sim::takeDubinsPath(PlaneObject &plane1) {
 		//ROS_WARN("FINE: %f", findDistance(circleCenter.latitude, circleCenter.longitude, wp.latitude, wp.longitude));
 		return wp;
 	}
-}
-
-
-sim::coordinate sim::calculateCircleCenter(PlaneObject &plane, double turnRadius, bool turnRight) {
-	sim::coordinate circleCenter;
-	circleCenter.altitude = plane.getCurrentLoc().altitude;
-	double angle;
-	if (turnRight) {
-		angle = (toCartesian(plane.getCurrentBearing()) - 90) * PI/180.0; 
-	}
-	else {
-		angle = (toCartesian(plane.getCurrentBearing()) + 90) * PI/180.0;
-	}
-	double xdiff = turnRadius*cos(angle);
-	double ydiff = turnRadius*sin(angle);
-	circleCenter.longitude = plane.getCurrentLoc().longitude + xdiff/DELTA_LON_TO_METERS;
-	circleCenter.latitude = plane.getCurrentLoc().latitude + ydiff/DELTA_LAT_TO_METERS; 
-
-	return circleCenter;
 }
 
 

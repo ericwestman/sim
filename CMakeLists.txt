@@ -41,7 +41,7 @@ rosbuild_add_executable(ControlMenu src/ControlMenu.cpp src/sim/standardDefs.cpp
 rosbuild_add_executable(KMLCreator src/KMLCreator.cpp)
 rosbuild_add_executable(visualization src/visualization.cpp)
 rosbuild_add_executable(evaluator src/evaluator.cpp src/sim/standardDefs.cpp)
-#rosbuild_add_executable(rvizTranslator src/rvizTranslator.cpp)
+rosbuild_add_executable(rvizTranslator src/rvizTranslator.cpp)
 
 #JAVA executables
 #rospack_add_java_executable(XBeeIO com/GCS/xbee/XBeeGCS)

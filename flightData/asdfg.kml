@@ -1,0 +1,4200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Test</name>
+    <open>1</open>
+    <Style id="lineType0">
+      <LineStyle>
+        <color>7f0000ff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7fffffff</color>
+      </PolyStyle>
+    </Style>
+    <Style id="lineType1">
+      <LineStyle>
+        <color>7f00ff00</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7fffffff</color>
+      </PolyStyle>
+    </Style>
+    <Style id="lineType2">
+      <LineStyle>
+        <color>7fff0000</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7fffffff</color>
+      </PolyStyle>
+    </Style>
+    <Style id="lineType3">
+      <LineStyle>
+        <color>7f00ffff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7fffffff</color>
+      </PolyStyle>
+    </Style>
+    <Style id="lineType4">
+      <LineStyle>
+        <color>7fff00ff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7fffffff</color>
+      </PolyStyle>
+    </Style>
+    <Style id="lineType5">
+      <LineStyle>
+        <color>7fffff00</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7fffffff</color>
+      </PolyStyle>
+    </Style>
+    <Folder>
+      <name>Paths</name>
+      <visibility>1</visibility>
+      <Folder>
+        <name>UAV #0</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #0</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.486748</longitude>
+            <latitude>32.606195</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.486748, 32.606195</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #0</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.486748</longitude>
+            <latitude>32.606195</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType0</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.486748, 32.606195, 400.000000
+              -85.486748, 32.606195, 400.000000
+              -85.486748, 32.606195, 400.000000
+              -85.486748, 32.606195, 400.000000
+              -85.486748, 32.606195, 400.000000
+              -85.486794, 32.606288, 400.000000
+              -85.486878, 32.606359, 400.000000
+              -85.486988, 32.606397, 400.000000
+              -85.487108, 32.606398, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #0</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #1</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #1</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.488264</longitude>
+            <latitude>32.606195</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.488264, 32.606195</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #1</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.488264</longitude>
+            <latitude>32.606195</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType1</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.488264, 32.606195, 400.000000
+              -85.488264, 32.606195, 400.000000
+              -85.488264, 32.606195, 400.000000
+              -85.488264, 32.606195, 400.000000
+              -85.488264, 32.606195, 400.000000
+              -85.488218, 32.606288, 400.000000
+              -85.488134, 32.606359, 400.000000
+              -85.488024, 32.606397, 400.000000
+              -85.487904, 32.606398, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #1</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #2</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #2</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.488018</longitude>
+            <latitude>32.605305</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.488018, 32.605305</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #2</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.488018</longitude>
+            <latitude>32.605305</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType2</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.488018, 32.605305, 400.000000
+              -85.488018, 32.605305, 400.000000
+              -85.488018, 32.605305, 400.000000
+              -85.488018, 32.605305, 400.000000
+              -85.488018, 32.605305, 400.000000
+              -85.487972, 32.605398, 400.000000
+              -85.487888, 32.605469, 400.000000
+              -85.487778, 32.605507, 400.000000
+              -85.487658, 32.605507, 400.000000
+              -85.487548, 32.605546, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #2</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #3</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #3</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.485338</longitude>
+            <latitude>32.604208</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.485338, 32.604208</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #3</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.485338</longitude>
+            <latitude>32.604208</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType3</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.485338, 32.604208, 400.000000
+              -85.485338, 32.604208, 400.000000
+              -85.485338, 32.604208, 400.000000
+              -85.485338, 32.604208, 400.000000
+              -85.485338, 32.604208, 400.000000
+              -85.485384, 32.604301, 400.000000
+              -85.485468, 32.604372, 400.000000
+              -85.485578, 32.604410, 400.000000
+              -85.485698, 32.604410, 400.000000
+              -85.485808, 32.604373, 400.000000
+              -85.485928, 32.604371, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #3</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #4</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #4</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.486630</longitude>
+            <latitude>32.604918</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.486630, 32.604918</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #4</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.486630</longitude>
+            <latitude>32.604918</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType4</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.486630, 32.604918, 400.000000
+              -85.486630, 32.604918, 400.000000
+              -85.486630, 32.604918, 400.000000
+              -85.486630, 32.604918, 400.000000
+              -85.486630, 32.604918, 400.000000
+              -85.486676, 32.605011, 400.000000
+              -85.486760, 32.605082, 400.000000
+              -85.486870, 32.605120, 400.000000
+              -85.486990, 32.605120, 400.000000
+              -85.487109, 32.605119, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #4</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #5</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #5</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.487004</longitude>
+            <latitude>32.603372</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.487004, 32.603372</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #5</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.487004</longitude>
+            <latitude>32.603372</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType5</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.487004, 32.603372, 400.000000
+              -85.487004, 32.603372, 400.000000
+              -85.487004, 32.603372, 400.000000
+              -85.487004, 32.603372, 400.000000
+              -85.487004, 32.603372, 400.000000
+              -85.487050, 32.603465, 400.000000
+              -85.487134, 32.603536, 400.000000
+              -85.487243, 32.603578, 400.000000
+              -85.487327, 32.603649, 400.000000
+              -85.487435, 32.603691, 400.000000
+              -85.487520, 32.603761, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #5</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #6</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #6</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.487805</longitude>
+            <latitude>32.602877</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.487805, 32.602877</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #6</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.487805</longitude>
+            <latitude>32.602877</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType0</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.487805, 32.602877, 400.000000
+              -85.487805, 32.602877, 400.000000
+              -85.487805, 32.602877, 400.000000
+              -85.487805, 32.602877, 400.000000
+              -85.487805, 32.602877, 400.000000
+              -85.487792, 32.602977, 400.000000
+              -85.487779, 32.603077, 400.000000
+              -85.487726, 32.603167, 400.000000
+              -85.487639, 32.603236, 400.000000
+              -85.487589, 32.603327, 400.000000
+              -85.487505, 32.603398, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #6</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #7</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #7</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.489459</longitude>
+            <latitude>32.605350</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.489459, 32.605350</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #7</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.489459</longitude>
+            <latitude>32.605350</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType1</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.489459, 32.605350, 400.000000
+              -85.489459, 32.605350, 400.000000
+              -85.489459, 32.605350, 400.000000
+              -85.489459, 32.605350, 400.000000
+              -85.489426, 32.605447, 400.000000
+              -85.489393, 32.605543, 400.000000
+              -85.489361, 32.605640, 400.000000
+              -85.489328, 32.605737, 400.000000
+              -85.489295, 32.605833, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #7</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #8</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #8</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.487367</longitude>
+            <latitude>32.602481</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.487367, 32.602481</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #8</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.487367</longitude>
+            <latitude>32.602481</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType2</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.487367, 32.602481, 400.000000
+              -85.487367, 32.602481, 400.000000
+              -85.487367, 32.602481, 400.000000
+              -85.487367, 32.602481, 400.000000
+              -85.487321, 32.602574, 400.000000
+              -85.487274, 32.602666, 400.000000
+              -85.487227, 32.602758, 400.000000
+              -85.487179, 32.602851, 400.000000
+              -85.487098, 32.602924, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #8</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #9</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #9</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.485659</longitude>
+            <latitude>32.602985</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.485659, 32.602985</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #9</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.485659</longitude>
+            <latitude>32.602985</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType3</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.485659, 32.602985, 400.000000
+              -85.485659, 32.602985, 400.000000
+              -85.485659, 32.602985, 400.000000
+              -85.485659, 32.602985, 400.000000
+              -85.485705, 32.603078, 400.000000
+              -85.485761, 32.603166, 400.000000
+              -85.485817, 32.603255, 400.000000
+              -85.485874, 32.603344, 400.000000
+              -85.485930, 32.603432, 400.000000
+              -85.485946, 32.603532, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #9</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #10</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #10</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.489086</longitude>
+            <latitude>32.602742</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.489086, 32.602742</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #10</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.489086</longitude>
+            <latitude>32.602742</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType4</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.489086, 32.602742, 400.000000
+              -85.489086, 32.602742, 400.000000
+              -85.489086, 32.602742, 400.000000
+              -85.489086, 32.602742, 400.000000
+              -85.489118, 32.602839, 400.000000
+              -85.489149, 32.602936, 400.000000
+              -85.489139, 32.603036, 400.000000
+              -85.489172, 32.603133, 400.000000
+              -85.489164, 32.603233, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #10</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #11</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #11</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.486395</longitude>
+            <latitude>32.603237</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.486395, 32.603237</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #11</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.486395</longitude>
+            <latitude>32.603237</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType5</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.486395, 32.603237, 400.000000
+              -85.486395, 32.603237, 400.000000
+              -85.486395, 32.603237, 400.000000
+              -85.486395, 32.603237, 400.000000
+              -85.486441, 32.603330, 400.000000
+              -85.486525, 32.603401, 400.000000
+              -85.486635, 32.603439, 400.000000
+              -85.486755, 32.603441, 400.000000
+              -85.486866, 32.603476, 400.000000
+              -85.486986, 32.603474, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #11</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #12</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #12</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.489406</longitude>
+            <latitude>32.602077</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.489406, 32.602077</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #12</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.489406</longitude>
+            <latitude>32.602077</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType0</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.489406, 32.602077, 400.000000
+              -85.489406, 32.602077, 400.000000
+              -85.489406, 32.602077, 400.000000
+              -85.489406, 32.602077, 400.000000
+              -85.489360, 32.602170, 400.000000
+              -85.489298, 32.602255, 400.000000
+              -85.489276, 32.602354, 400.000000
+              -85.489298, 32.602453, 400.000000
+              -85.489273, 32.602551, 400.000000
+              -85.489292, 32.602651, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #12</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #13</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #13</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.485552</longitude>
+            <latitude>32.602391</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.485552, 32.602391</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #13</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.485552</longitude>
+            <latitude>32.602391</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType1</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.485552, 32.602391, 400.000000
+              -85.485552, 32.602391, 400.000000
+              -85.485552, 32.602391, 400.000000
+              -85.485552, 32.602391, 400.000000
+              -85.485598, 32.602484, 400.000000
+              -85.485682, 32.602555, 400.000000
+              -85.485792, 32.602593, 400.000000
+              -85.485903, 32.602630, 400.000000
+              -85.486014, 32.602667, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #13</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #14</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #14</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.490078</longitude>
+            <latitude>32.602688</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.490078, 32.602688</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #14</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.490078</longitude>
+            <latitude>32.602688</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType2</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.490078, 32.602688, 400.000000
+              -85.490078, 32.602688, 400.000000
+              -85.490078, 32.602688, 400.000000
+              -85.490078, 32.602688, 400.000000
+              -85.490032, 32.602781, 400.000000
+              -85.489950, 32.602853, 400.000000
+              -85.489842, 32.602897, 400.000000
+              -85.489761, 32.602971, 400.000000
+              -85.489654, 32.603016, 400.000000
+              -85.489574, 32.603090, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #14</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>UAV #15</name>
+        <visibility>1</visibility>
+        <Placemark>
+          <name>Start #15</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.488296</longitude>
+            <latitude>32.603605</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>-85.488296, 32.603605</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Telemetry #15</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>-85.488296</longitude>
+            <latitude>32.603605</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <styleUrl>#lineType3</styleUrl>
+          <LineString>
+            <extrude>1</extrude>
+            <tessallate>1</tessallate>
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
+              -85.488296, 32.603605, 400.000000
+              -85.488296, 32.603605, 400.000000
+              -85.488296, 32.603605, 400.000000
+              -85.488296, 32.603605, 400.000000
+              -85.488250, 32.603698, 400.000000
+              -85.488166, 32.603769, 400.000000
+              -85.488116, 32.603860, 400.000000
+              -85.488029, 32.603929, 400.000000
+              -85.487975, 32.604018, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+              nan, nan, 400.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+        <Placemark>
+          <name>End #15</name>
+          <visibility>1</visibility>
+          <LookAt>
+            <longitude>nan</longitude>
+            <latitude>nan</latitude>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <tilt>0</tilt>
+            <range>4451.842204068102</range>
+          </LookAt>
+          <Point>
+            <coordinates>nan, nan</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+    </Folder>
+  </Document>
+</kml>

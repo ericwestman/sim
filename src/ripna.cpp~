@@ -62,11 +62,6 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 
 	if ((plane1.getID() == 5 && threatID == 15 ) || (plane1.getID() == 15 && threatID == 5)) {
 	//ROS_WARN("Plane %d's greatest threat is plane %d with ZEM = %f", plane1.getID(), threatID, threatZEM);
-	
-	ROS_WARN("------------------------------------------------------------------------");
-	ROS_WARN("Plane %d's bearing is %f Plane%d's bearing is %f ZEM: %f", plane1.getID(), plane1.getCurrentBearing(), threatID, planes[threatID].getCurrentBearing(), threatZEM);
-	ROS_WARN("Plane %d Latitude: %f, Longitude: %f", plane1.getID(), plane1.getCurrentLoc().latitude, plane1.getCurrentLoc().longitude);
-	ROS_WARN("Planes %d and %d should turnright:%d", plane1.getID(), threatID, turnRight);
 
 	}
 
@@ -147,7 +142,7 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 
 
 		//timeToDest = plane1.findDistance(plane1.getDestination().latitude, 
-			plane1.getDestination().longitude) / MPS_SPEED;
+			//plane1.getDestination().longitude) / MPS_SPEED;
 
 		/* If you're close to your destination and the other plane isn't
 		much of a threat, then don't avoid it */ 

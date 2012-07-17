@@ -343,6 +343,19 @@ rospack_gensrv_all/fast:
 .PHONY : rospack_gensrv_all/fast
 
 #=============================================================================
+# Target rules for targets named rvizTranslator
+
+# Build rule for target.
+rvizTranslator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rvizTranslator
+.PHONY : rvizTranslator
+
+# fast build rule for target.
+rvizTranslator/fast:
+	$(MAKE) -f CMakeFiles/rvizTranslator.dir/build.make CMakeFiles/rvizTranslator.dir/build
+.PHONY : rvizTranslator/fast
+
+#=============================================================================
 # Target rules for targets named simulator
 
 # Build rule for target.
@@ -539,6 +552,21 @@ src/ripna.s:
 .PHONY : src/ripna.s
 
 # target to build an object file
+src/rvizTranslator.o:
+	$(MAKE) -f CMakeFiles/rvizTranslator.dir/build.make CMakeFiles/rvizTranslator.dir/src/rvizTranslator.o
+.PHONY : src/rvizTranslator.o
+
+# target to preprocess a source file
+src/rvizTranslator.i:
+	$(MAKE) -f CMakeFiles/rvizTranslator.dir/build.make CMakeFiles/rvizTranslator.dir/src/rvizTranslator.i
+.PHONY : src/rvizTranslator.i
+
+# target to generate assembly for a file
+src/rvizTranslator.s:
+	$(MAKE) -f CMakeFiles/rvizTranslator.dir/build.make CMakeFiles/rvizTranslator.dir/src/rvizTranslator.s
+.PHONY : src/rvizTranslator.s
+
+# target to build an object file
 src/sim/PlaneCoordinator.o:
 	$(MAKE) -f CMakeFiles/coordinator.dir/build.make CMakeFiles/coordinator.dir/src/sim/PlaneCoordinator.o
 .PHONY : src/sim/PlaneCoordinator.o
@@ -682,6 +710,7 @@ help:
 	@echo "... rospack_genmsg_libexe"
 	@echo "... rospack_gensrv"
 	@echo "... rospack_gensrv_all"
+	@echo "... rvizTranslator"
 	@echo "... simulator"
 	@echo "... test"
 	@echo "... test-future"
@@ -710,6 +739,9 @@ help:
 	@echo "... src/ripna.o"
 	@echo "... src/ripna.i"
 	@echo "... src/ripna.s"
+	@echo "... src/rvizTranslator.o"
+	@echo "... src/rvizTranslator.i"
+	@echo "... src/rvizTranslator.s"
 	@echo "... src/sim/PlaneCoordinator.o"
 	@echo "... src/sim/PlaneCoordinator.i"
 	@echo "... src/sim/PlaneCoordinator.s"
