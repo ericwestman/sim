@@ -92,8 +92,9 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg) {
 		return;
 	}
 
-	/* If the plane has reached its current destination, move on to the next destination waypoint. This does not set
-    the destination	of the plane object in the map "planes". */
+	/* If the plane has reached its current destination, move on to the 
+	next destination waypoint. This does not set 
+	the destination of the plane object in the map "planes". */
 	if (findDistance(msg->currentLatitude, msg->currentLongitude, 
 					requestWaypointInfoSrv.response.latitude, 
 					requestWaypointInfoSrv.response.longitude) < COLLISION_THRESHOLD){
@@ -108,7 +109,8 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg) {
 	}
 
 
-	/* If the plane is not in our map of planes and has destination waypoints, then add it as a new plane to our map of planes. */
+	/* If the plane is not in our map of planes and has destination waypoints, 
+	then add it as a new plane to our map of planes. */
 	if (planes.find(planeID) == planes.end() && msg->currentWaypointIndex != -1){ 
 		/* This is a new plane, so create a new planeObject and give it the appropriate information. */
 		sim::PlaneObject newPlane(MPS_SPEED, *msg); 
@@ -125,13 +127,13 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg) {
 		numPlanes += 1;
 		return;
 	}
-    /* Else if the plane is not in our map of planes and does not have waypoints, return and do nothing more. */
+	/* Else if the plane is not in our map of planes and does not have waypoints, return and do nothing more. */
 	else if (planes.find(planeID) == planes.end()) 
 		return; 
-    
 
-	/* Note: The requestWaypointInfo service returns a waypoint of -1000, -1000 when the UAV cannot retrieve a
-    destination from queue. */
+
+	/* Note: The requestWaypointInfo service returns a waypoint of -1000, -1000 
+	when the UAV cannot retrieve a destination from queue. */
 
 	/* If the plane has no waypoint to go to, put it far from all others. */
 	if (requestWaypointInfoSrv.response.latitude == -1000){ //plane has no waypoints to go to
@@ -143,10 +145,10 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg) {
 		return; 
 	}
     
-	/* Else (the plane does have a waypoint to go to) update the plane with new position and destination received from
-    requestWaypointInfoSrv response. */
+	/* Else (the plane does have a waypoint to go to) update the plane with new 
+	position and destination received from requestWaypointInfoSrv response. */
 	else {
-		planes[planeID].update(*msg); //update plane with new position
+		planes[planeID].update(*msg); //update plane with new position and such
 		sim::waypoint newDest;
 
 		newDest.latitude = requestWaypointInfoSrv.response.latitude;
@@ -157,18 +159,18 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg) {
 	}
 
 
-	/* Each plane calls the collision avoidance algorithm. */
+	/* Call collision avoidance algorithm if we have all the planes*/
 	if (planeID != numPlanes - 1) {
 		return;
 	}
 
 	sim::waypoint newWaypoint;
 	
-    /* This code calls the collision avoidance algorithm and determines if collision avoidance maneuvers should be
-    taken. Returns a waypoint for the plane to go to. */	
-	for (int n = 0; n < numPlanes; n++) {
-
-		currentPlaneID = n;
+	/* This code calls the collision avoidance algorithm and determines if collision 
+	avoidance maneuvers should be taken. Returns a waypoint for the plane to go to. */	
+	for (int currentPlaneID = 0; currentPlaneID < numPlanes; currentPlaneID++) {
+		
+		//Calls the collision avoidance algorithm
 		newWaypoint = findNewWaypoint(planes[currentPlaneID], planes);
 	
 		if ((requestWaypointInfoSrv.response.longitude == newWaypoint.longitude) 
@@ -192,9 +194,6 @@ void telemetryCallback(const sim::TelemetryUpdate::ConstPtr &msg) {
 			ROS_ERROR("Did not receive response");
 		}
 
-		requestWaypointInfoSrv.request.planeID = currentPlaneID;
-		requestWaypointInfoSrv.request.isAvoidanceWaypoint = true;
-		requestWaypointInfoSrv.request.positionInQueue = 0;
 	}
 
 }

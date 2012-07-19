@@ -39,7 +39,7 @@ void sim::mathVector::setMagnitude(double m) {
 Vector-based addition, subtract, and multiplication operator overloading.
 */
 
-/* Dot produt. */ 
+/* Dot product. */ 
 double sim::mathVector::dotProduct(const sim::mathVector& mV){
 	/* Ax = mag * cos(degree), Ay = mag * sin(degree) */
 	double Ax = this->magnitude * cos(this->direction * PI / 180.0);

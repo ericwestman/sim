@@ -2,7 +2,7 @@
 generator.cpp
 This file is intended to generate massive amounts of test cases with simple configuration
 
-Compiled with g++.
+Compiled with g++ ("g++ generator.cpp -o generator.out")
 */
 
 #include <stdio.h>

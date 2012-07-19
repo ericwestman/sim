@@ -3,7 +3,7 @@ automator
 This is a program to automatically startup several tests for AU_UAV_ROS evaluator when the
 inputs are enumerated in another .txt file.
 
-Compiled with G++.
+Compiled with g++ ("g++ automator.cpp -o automator.out")
 */
 
 #include <stdio.h>
@@ -15,9 +15,9 @@ Compiled with G++.
 #include <sys/wait.h>
 
 //normal time + 30 as buffer time
-#define SIMULATION_TIME 150					// TODO make sure this is the same as in the evaluator
+#define SIMULATION_TIME 100					// TODO make sure this is the same as in the evaluator
 #define BUFFER_TIME 5
-#define SLEEP_TIME (SIMULATION_TIME+16)
+#define SLEEP_TIME (SIMULATION_TIME+9)
 #define OUTPUT_ADDITION "_test\n" //the '\n' is CRITICAL
 #define LENGTH_OF_EXTENSION 7 //".course" has 7 characters
 

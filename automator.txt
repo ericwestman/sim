@@ -17,9 +17,9 @@ final_16_500m_3.course
 final_16_1000m_1.course
 final_16_1000m_2.course
 final_16_1000m_3.course
-final_32_500m_4.course
-final_32_500m_5.course
-final_32_500m_6.course
-final_32_1000m_7.course
-final_32_1000m_8.course
-final_32_1000m_9.course
+final_32_500m_1.course
+final_32_500m_2.course
+final_32_500m_3.course
+final_32_1000m_1.course
+final_32_1000m_2.course
+final_32_1000m_3.course

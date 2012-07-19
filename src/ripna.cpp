@@ -135,24 +135,24 @@ sim::threatContainer sim::findGreatestThreat(PlaneObject &plane1, std::map<int, 
 		
 		if( zeroEffortMiss > DANGER_ZEM || (timeToGo > minimumTimeToGo && timeToGo > iMinimumTimeToGo) || timeToGo < 0 ) continue;
         
-		//timeToDest = plane1.findDistance(plane1.getDestination().latitude, 
-			//plane1.getDestination().longitude) / MPS_SPEED;
+		timeToDest = plane1.findDistance(plane1.getDestination().latitude, 
+			plane1.getDestination().longitude) / MPS_SPEED;
 
 		/* If you're close to your destination and the other plane isn't
 		much of a threat, then don't avoid it */ 
-		//if ( timeToDest < 5.0 && zeroEffortMiss > 3.0*MPS_SPEED ) continue;
+		if ( timeToDest < 5.0 && zeroEffortMiss > 3.0*MPS_SPEED ) continue;
 
 		/* If you're likely to zigzag, don't avoid the other plane */
-		//bearingDiff = fabs(plane1.getCurrentBearing() - planes[ID].getCurrentBearing());
-		//if ( plane1.findDistance(planes[ID]) > 3.5*MPS_SPEED &&  bearingDiff < CHATTERING_ANGLE) continue;
+		bearingDiff = fabs(plane1.getCurrentBearing() - planes[ID].getCurrentBearing());
+		if ( plane1.findDistance(planes[ID]) > 3.5*MPS_SPEED &&  bearingDiff < CHATTERING_ANGLE) continue;
 
 		/* Second Threshold, to prevent planes from flying into others when trying to avoid less imminent collisions */
-		/*if ( zeroEffortMiss <= SECOND_THRESHOLD && timeToGo <= iMinimumTimeToGo ) {
+		if ( zeroEffortMiss <= SECOND_THRESHOLD && timeToGo <= iMinimumTimeToGo ) {
 			iPlaneToAvoid = ID;
 			iMostDangerousZEM = zeroEffortMiss;
 			iMinimumTimeToGo = timeToGo;
 			continue;
-		}*/
+		}
 
 		planeToAvoid = ID;
 		mostDangerousZEM = zeroEffortMiss;
@@ -272,9 +272,9 @@ sim::coordinate sim::calculateLoopingCircleCenter(PlaneObject &plane, double tur
 	double angle;
     
 	if (turnRight)
-		angle = (toCartesian(plane.getCurrentBearing()) - 90 - 22.5) * PI/180.0; 
+		angle = (toCartesian(plane.getCurrentBearing()) - 90 - 11.25) * PI/180.0; 
 	else
-		angle = (toCartesian(plane.getCurrentBearing()) + 90 + 22.5) * PI/180.0;
+		angle = (toCartesian(plane.getCurrentBearing()) + 90 + 11.25) * PI/180.0;
     
 	double xdiff = turnRadius*cos(angle);
 	double ydiff = turnRadius*sin(angle);

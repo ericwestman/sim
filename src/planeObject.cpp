@@ -28,29 +28,6 @@ sim::PlaneObject::PlaneObject(void) {
 	this->lastUpdateTime = ros::Time::now().toSec();
 	this->collisionRadius = 0.0;
 
-/*	ATTEMPT #1
-
-	//zigzagging
-	this->lastGreatestThreat = -1;
-	this->lastZEM = -1;
-	this->lastZEMTime = -1;
-*/
-
-/////////////////////// * ATTEMPT 2 * ///////////////////////////////
-	this->twoAgoThreatID = -1;
-	this->twoAgoZEM = -1;
-	this->twoAgoTgo = -1;
-
-	this->oneAgoThreatID = -1;
-	this->oneAgoZEM = -1;
-	this->oneAgoTgo = -1;
-
-	this->currentThreatID = -1;
-	this->currentZEM = -1;
-	this->currentTgo = -1;
-	this->antiZigzag = 0;
-/////////////////////////////////////////////////////////////////////
-
 }
 /* Explicit value constructor using TelemetryUpdate */
 sim::PlaneObject::PlaneObject(double cRadius, const sim::TelemetryUpdate &msg) {
@@ -70,29 +47,6 @@ sim::PlaneObject::PlaneObject(double cRadius, const sim::TelemetryUpdate &msg) {
 	this->destination.altitude = msg.destAltitude;
 	this->lastUpdateTime = ros::Time::now().toSec();
 	this->collisionRadius = cRadius;
-
-
-/*	ATTEMPT #1
-	//zigzagging
-	this->lastGreatestThreat = -1;
-	this->lastZEM = -1;
-	this->lastZEMTime = -1;
-*/
-
-/////////////////////// * ATTEMPT 2 * ///////////////////////////////
-	this->twoAgoThreatID = -1;
-	this->twoAgoZEM = -1;
-	this->twoAgoTgo = -1;
-
-	this->oneAgoThreatID = -1;
-	this->oneAgoZEM = -1;
-	this->oneAgoTgo = -1;
-
-	this->currentThreatID = -1;
-	this->currentZEM = -1;
-	this->currentTgo = -1;
-	this->antiZigzag = 0;
-/////////////////////////////////////////////////////////////////////
 
 }
 
@@ -129,58 +83,6 @@ void sim::PlaneObject::setDestination(const sim::waypoint &destination) {
 	this->destination = destination;
 }
 
-
-/*	ATTEMPT #1
-//zigzagging
-void sim::PlaneObject::setLastGreatestThreat(int lgt) {
-	this->lastGreatestThreat = lgt;
-}
-
-void sim::PlaneObject::setLastZEM(int ZEM) {
-	this->lastZEM = ZEM;
-}
-
-void sim::PlaneObject::setLastZEMTime() {
-	this->lastZEMTime = lastUpdateTime;
-}
-*/
-
-/////////////////////// * ATTEMPT 2 * ///////////////////////////////
-void sim::PlaneObject::setTwoAgoThreatID(int ID) {
-	this->twoAgoThreatID = ID;
-}
-void sim::PlaneObject::setTwoAgoZEM(double ZEM) {
-	this->twoAgoZEM = ZEM;
-}
-void sim::PlaneObject::setTwoAgoTgo(double Tgo) {
-	this->twoAgoTgo = Tgo;
-}
-
-void sim::PlaneObject::setOneAgoThreatID(int ID) {
-	this->oneAgoThreatID = ID;
-}
-void sim::PlaneObject::setOneAgoZEM(double ZEM) {
-	this->oneAgoZEM = ZEM;
-}
-void sim::PlaneObject::setOneAgoTgo(double Tgo) {
-	this->oneAgoTgo = Tgo;
-}
-
-void sim::PlaneObject::setCurrentThreatID(int ID) {
-	this->currentThreatID = ID;
-}
-void sim::PlaneObject::setCurrentZEM(double ZEM) {
-	this->currentZEM = ZEM;
-}
-void sim::PlaneObject::setCurrentTgo(double Tgo) {
-	this->currentTgo = Tgo;
-}
-
-void sim::PlaneObject::setAntiZigzag(int zig){
-	this->antiZigzag = zig;
-}
-/////////////////////////////////////////////////////////////////////
-
 void sim::PlaneObject::updateTime(void) {
 	this->lastUpdateTime = ros::Time::now().toSec();
 }
@@ -188,25 +90,23 @@ void sim::PlaneObject::updateTime(void) {
 
 void sim::PlaneObject::update(const sim::TelemetryUpdate &msg) {
 
-	//Calculate actual Cardinal Bearing
+	//Update previous and current position
 	this->setPreviousLoc(this->currentLoc.latitude, this->currentLoc.longitude, this->currentLoc.altitude);
 	this->setCurrentLoc(msg.currentLatitude, msg.currentLongitude, msg.currentAltitude);
-
+	
+	//Calculate actual Cardinal Bearing
 	double numerator = (this->currentLoc.latitude - this->previousLoc.latitude);
 	double denominator = (this->currentLoc.longitude - this->previousLoc.longitude);
 	double angle = atan2(numerator*DELTA_LAT_TO_METERS,denominator*DELTA_LON_TO_METERS)*180/PI;
 
-	/*if (this->id == 5 || this->id == 15) {
-		ROS_WARN("Num: %f Den: %f Ang: %f", numerator, denominator, angle);
-	}*/
 	if (this->currentLoc.latitude != this->previousLoc.latitude && this->currentLoc.longitude != this->previousLoc.longitude)
 	{ 
 			this->setCurrentBearing(toCardinal(angle));
 	}
 	else this->setCurrentBearing(0.0);
 
+	// Update everything else
 	this->setTargetBearing(msg.targetBearing);
-
 	this->setSpeed(msg.groundSpeed);
 	this->updateTime();
 }
@@ -244,58 +144,6 @@ sim::waypoint sim::PlaneObject::getDestination(void) const {
 	return this->destination;
 }
 
-
-/*	ATTEMPT #1
-//zigzagging
-int sim::PlaneObject::getLastGreatestThreat(void) const {
-	return this->lastGreatestThreat;
-}
-
-int sim::PlaneObject::getLastZEM(void) const {
-	return this->lastZEM;
-}
-
-double sim::PlaneObject::getLastZEMTime(void) const {
-	return this->lastZEMTime;
-}
-*/
-
-/////////////////////// * ATTEMPT 2 * ///////////////////////////////
-int sim::PlaneObject::getTwoAgoThreatID(void) const {
-	return this->twoAgoThreatID;
-}
-double sim::PlaneObject::getTwoAgoZEM(void) const {
-	return this->twoAgoZEM;
-}
-double sim::PlaneObject::getTwoAgoTgo(void) const {
-	return this->twoAgoTgo;
-}
-
-int sim::PlaneObject::getOneAgoThreatID(void) const {
-	return this->oneAgoThreatID;
-}
-double sim::PlaneObject::getOneAgoZEM(void) const {
-	return this->oneAgoZEM;
-}
-double sim::PlaneObject::getOneAgoTgo(void) const {
-	return this->oneAgoTgo;
-}
-
-int sim::PlaneObject::getCurrentThreatID(void) const {
-	return this->currentThreatID;
-}
-double sim::PlaneObject::getCurrentZEM(void) const {
-	return this->currentZEM;
-}
-double sim::PlaneObject::getCurrentTgo(void) const {
-	return this->currentTgo;
-}
-
-int sim::PlaneObject::getAntiZigzag(void) const {
-	return this->antiZigzag;
-}
-/////////////////////////////////////////////////////////////////////
-
 /* Find distance between this plane and another plane, returns in meters */
 double sim::PlaneObject::findDistance(const sim::PlaneObject& plane) const {
 	return this->findDistance(plane.currentLoc.latitude, plane.currentLoc.longitude);
@@ -327,19 +175,6 @@ double sim::PlaneObject::findAngle(double lat2, double lon2) const {
 }
 
 
-bool sim::PlaneObject::isBehind(const sim::PlaneObject& plane2, bool turnRight) const {
-
-    	double theta = this->findAngle(plane2.getCurrentLoc().latitude, plane2.getCurrentLoc().longitude);
-	double cartBearing = toCartesian(this->currentBearing);
-	double cartBearingBar = manipulateAngle(cartBearing - 180.0);
-
-	if (turnRight && theta < cartBearing && theta > cartBearingBar) return true;
-	else if (turnRight) return false;
-	else if (theta > cartBearing && theta < cartBearingBar) return true;
-	else return false;
-}
-
-
 sim::PlaneObject& sim::PlaneObject::operator=(const sim::PlaneObject& plane) {
 
 	this->id = plane.id;
@@ -361,21 +196,6 @@ sim::PlaneObject& sim::PlaneObject::operator=(const sim::PlaneObject& plane) {
 	this->speed = plane.speed;
 	this->lastUpdateTime = plane.lastUpdateTime;
 	this->collisionRadius = plane.collisionRadius;
-
-
-/////////////////////// * ATTEMPT 2 * ///////////////////////////////
-	this->twoAgoThreatID = plane.twoAgoThreatID;
-	this->twoAgoZEM = plane.twoAgoZEM;
-	this->twoAgoTgo = plane.twoAgoTgo;
-
-	this->oneAgoThreatID = plane.oneAgoThreatID;
-	this->oneAgoZEM = plane.oneAgoZEM;
-	this->oneAgoTgo = plane.oneAgoTgo;
-
-	this->currentThreatID = plane.currentThreatID;
-	this->currentZEM = plane.currentZEM;
-	this->currentTgo = plane.currentTgo;
-/////////////////////////////////////////////////////////////////////
 
 	return *this;
 }

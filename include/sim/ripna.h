@@ -14,9 +14,9 @@ This is the header file for RIPNA.cpp, which implements the functions declared h
 namespace sim {
 	
 	/*This function is called in collisionAvoidance.cpp and utilizes the other 
-	functions outlined in this file to generate a collision avoidance waypoint.
-    If no collision avoidance or maneuvering is necessary, this functions returns
-    the current destination waypoint. */
+	functions outlined in this file to generate a collision avoidance waypoint. 
+	If no collision avoidance or maneuvering is necessary, this functions 
+	the current destination waypoint. */
 	sim::waypoint findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObject> &planes);
 	
 	/*This function receives the current plane and a map of all of the planes 
