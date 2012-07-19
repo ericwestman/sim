@@ -55,12 +55,7 @@ sim::waypoint sim::findNewWaypoint(PlaneObject &plane1, std::map<int, PlaneObjec
 
 	/* Given turning radius and orientation of the plane, calculate 
 	next collision avoidance waypoint*/
-	sim::waypoint wp = calculateWaypoint(plane1, turningRadius, turnRight);
-	if (wp.latitude != wp.latitude || wp.longitude != wp.longitude) {
-		ROS_WARN("%d\t%f\t%f\t%d\t%f\t%f\t%f", threatID, threatZEM, timeToGo, turnRight, turningRadius, wp.latitude, wp.longitude);
-	}
-	return wp;
-
+	return calculateWaypoint(plane1, turningRadius, turnRight);
 }
 
 	
